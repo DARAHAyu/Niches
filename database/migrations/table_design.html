@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Tables</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/dashboard/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+<h1>Tables</h1>
+    <div class="container-fluid">
+        <div class="row">
+            
+                
+
+
+                <!-- table[Start] --><div class="col-md-3"><h2 class="info">users</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>bigIncrements('id');
+</td><td></td></tr><tr><td>2</td><td>string('name');
+</td><td></td></tr><tr><td>3</td><td>string('email');
+</td><td></td></tr><tr><td>4</td><td>timestamp('email_verified_at')->nullable();
+</td><td></td></tr><tr><td>5</td><td>string('password');
+</td><td></td></tr><tr><td>6</td><td>string('remember_token',100);
+</td><td></td></tr><tr><td>7</td><td>timestamps();
+</td><td></td></tr><tr><td>8</td><td>unique('email');
+</td><td></td></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">password_resets</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>string('email');
+</td><td></td></tr><tr><td>2</td><td>string('token');
+</td><td></td></tr><tr><td>3</td><td>timestamp('created_at')->nullable();
+</td><td></td></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">failed_jobs</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>bigIncrements('id');
+</td><td></td></tr><tr><td>2</td><td>string('uuid');
+</td><td></td></tr><tr><td>3</td><td>text('connection');
+</td><td></td></tr><tr><td>4</td><td>text('queue');
+</td><td></td></tr><tr><td>5</td><td>longText('payload');
+</td><td></td></tr><tr><td>6</td><td>longText('exception');
+</td><td></td></tr><tr><td>7</td><td>timestamp('failed_at')->useCurrent();
+</td><td></td></tr><tr><td>8</td><td>unique('uuid');
+</td><td></td></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">personal_access_tokens</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>bigIncrements('id');
+</td><td></td></tr><tr><td>2</td><td>string('name');
+</td><td></td></tr><tr><td>3</td><td>string('token',64);
+</td><td></td></tr><tr><td>4</td><td>text('abilities')->nullable();
+</td><td></td></tr><tr><td>5</td><td>timestamp('last_used_at')->nullable();
+</td><td></td></tr><tr><td>6</td><td>timestamp('expires_at')->nullable();
+</td><td></td></tr><tr><td>7</td><td>timestamps();
+</td><td></td></tr><tr><td>8</td><td>unique('token');
+</td><td></td></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">user_details</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>string('occupation',255);
+</td><td></td></tr><tr><td>3</td><td>integer('age');
+</td><td></td></tr><tr><td>4</td><td>string('business_area',255);
+</td><td></td></tr><tr><td>5</td><td>string('nickname',255);
+</td><td></td></tr><tr><td>6</td><td>timestamps();
+</td><td></td></tr><tr><td>7</td><td>integer('user_id')->unsigned();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("user_id")<span class="text-danger">->references("id")->on("users");</span>
+</td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">purchase_orders</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>integer('category_id')->unsigned();
+</td><td></td></tr><tr><td>3</td><td>string('title',50);
+</td><td></td></tr><tr><td>4</td><td>text('purchase_abstract');
+</td><td></td></tr><tr><td>5</td><td>timestamps();
+</td><td></td></tr><tr><td>6</td><td>integer('user_id')->unsigned();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("category_id")<span class="text-danger">->references("id")->on("caterories");</span>
+</td></tr></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("user_id")<span class="text-danger">->references("id")->on("users");</span>
+</td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">sales_orders</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>integer('category_id')->unsigned();
+</td><td></td></tr><tr><td>3</td><td>string('title',50);
+</td><td></td></tr><tr><td>4</td><td>text('sales_abstract');
+</td><td></td></tr><tr><td>5</td><td>timestamps();
+</td><td></td></tr><tr><td>6</td><td>integer('user_id')->unsigned();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("category_id")<span class="text-danger">->references("id")->on("caterories");</span>
+</td></tr></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("user_id")<span class="text-danger">->references("id")->on("users");</span>
+</td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">messages</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>integer('user_id')->unsigned();
+</td><td></td></tr><tr><td>3</td><td>text('message');
+</td><td></td></tr><tr><td>4</td><td>integer('message_room_id')->nullable()->unsigned();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("user_id")<span class="text-danger">->references("id")->on("users");</span>
+</td></tr></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("message_room_id")<span class="text-danger">->references("id")->on("message_rooms");</span>
+</td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">message_rooms</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">message_room_user</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>integer('user_id')->unsigned();
+</td><td></td></tr><tr><td>3</td><td>integer('message_room_id')->unsigned();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("user_id")<span class="text-danger">->references("id")->on("users");</span>
+</td></tr></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("message_room_id")<span class="text-danger">->references("id")->on("message_rooms");</span>
+</td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">caterories</h2><h5>[ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>string('category',20);
+</td><td></td></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --> </main>
+        </div>
+    </div>
+</body>
+
+</html>

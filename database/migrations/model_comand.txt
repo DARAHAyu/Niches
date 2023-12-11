@@ -1,0 +1,14 @@
+//----------------------------------------------------
+// Make Model Command.
+//----------------------------------------------------
+php artisan make:model User -mcr
+php artisan make:model PasswordReset -mcr
+php artisan make:model FailedJob -mcr
+php artisan make:model PersonalAccessToken -mcr
+php artisan make:model UserDetail -mcr
+php artisan make:model PurchaseOrder -mcr
+php artisan make:model SalesOrder -mcr
+php artisan make:model Message -mcr
+php artisan make:model MessageRoom -mcr
+php artisan make:model MessageRoomUse -mcr
+php artisan make:model Caterorie -mcr
