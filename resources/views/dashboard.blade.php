@@ -6,7 +6,11 @@
             <div class="max-w-md mb-10">
                 <h2>Nichesへようこそ！</h2>
                 {{-- ユーザ登録ページへのリンク --}}
+                @if (Auth::check())
+                
+                @else
                 <a class="btn btn-primary btn-lg normal-case" href="{{ route('register') }}">今すぐサインアップ</a>
+                @endif
             </div>
         </div>
     </div>
