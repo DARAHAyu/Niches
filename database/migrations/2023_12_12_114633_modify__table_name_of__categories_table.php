@@ -12,27 +12,17 @@
              */
             public function up()
             {
-                Schema::create("sales_orders", function (Blueprint $table) {
+                Schema::create("categories", function (Blueprint $table) {
 
 						$table->increments('id');
-						$table->integer('category_id')->unsigned();
-						$table->string('title',50);
-						$table->text('sales_abstract');
-						$table->timestamps();
-						$table->integer('user_id')->unsigned();
-
-                        // 以下外部キー制約、必要に応じてコメントアウト
-						$table->foreign("category_id")->references("id")->on("caterories");
-						$table->foreign("user_id")->references("id")->on("users");
+						$table->string('category',20);
 
 
 
 						// ----------------------------------------------------
-						// -- SELECT [sales_orders]--
+						// -- SELECT [categories]--
 						// ----------------------------------------------------
-						// $query = DB::table("sales_orders")
-						// ->leftJoin("caterories","caterories.id", "=", "sales_orders.category_id")
-						// ->leftJoin("users","users.id", "=", "sales_orders.user_id")
+						// $query = DB::table("categories")
 						// ->get();
 						// dd($query); //For checking
 
@@ -48,7 +38,7 @@
              */
             public function down()
             {
-                Schema::dropIfExists("sales_orders");
+                Schema::dropIfExists("categories");
             }
         };
     

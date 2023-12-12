@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function sales_orders()
+    {
+        return $this->hasMany(SalesOrder::class);
+    }
+
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('sales_orders');
+    }
 }

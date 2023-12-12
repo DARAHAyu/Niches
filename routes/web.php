@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SalesOrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,5 @@ require __DIR__.'/auth.php';
 
 Route::group(['middlwware' => ['auth']], function() {
     Route::resource('users', UsersController::class, ['only' => ['index', 'show']]);
+    Route::resource('sales_orders', SalesOrdersController::class, ['only' => ['store', 'destroy']]);
 });
