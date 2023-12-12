@@ -17,5 +17,5 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/forms')],
-    plugins: [require("tailwindcss/typography"), require("daisyui")], // 追記
+    plugins: [require("@tailwindcss/typography"), require("daisyui")], // 追記
 };
