@@ -2,7 +2,7 @@
     {{-- ユーザプロフィールページへのリンク --}}
     <li><a class="link link-hover" href="{{ route('users.show', Auth::user()->id) }}">{{ Auth::user()->name }}のプロフィール</a></li>
     {{-- 発注者ページへのリンク --}}
-    <li><a class = "link link-hover" href="#">仕事を依頼する</a></li>
+    <li><a class = "link link-hover" href="{{ route('sales-orders', Auth::user()->id) }}">仕事を依頼する</a></li> 
     {{-- 受注者ページへのリンク --}}
     <li><a class = "link link-hover" href="#">仕事を受注する</a></li>
     {{-- タイムラインへのリンク（トップページとくっつけてもいいかも？） --}}

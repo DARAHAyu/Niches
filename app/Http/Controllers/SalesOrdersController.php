@@ -23,8 +23,14 @@ class SalesOrdersController extends Controller
         ];
         }
 
-        // dashboardビューでそれらを表示
+        // dashboardビューでそれらを表示（テキスト準拠）
+        /*
         return view('dashboard', $data);
+        */
+
+        // これはいける？
+        return view('orders.sales_orders_page', $data);
+        
     }
 
     public function store(Request $request)
