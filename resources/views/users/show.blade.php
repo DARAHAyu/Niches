@@ -7,8 +7,10 @@
             @include('users.card')
         </aside>
         <div class="sm:col-span-2 mt-4">
-            {{-- 投稿フォーム --}}
+            {{-- オーダーフォーム --}}
             @include('orders.form')
+            {{-- オーダー一覧 --}}
+            @include('orders.sales_orders')
         </div>
     </div>
 @endsection
