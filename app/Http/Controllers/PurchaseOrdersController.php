@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\SalesOrder;
+use App\Models\PurchaseOrder;
 
-class SalesOrdersController extends Controller
+class PurchaseOrdersController extends Controller
 {
     public function index()
     {
@@ -18,20 +18,14 @@ class SalesOrdersController extends Controller
         
         // ユーザの投稿の一覧を作成日時の降順で取得
         // （後のChapterで他ユーザの投稿も取得するように変更するが、現時点ではこのユーザの投稿のみ取得する
-        $sales_orders = $user->sales_orders()->orderBy('created_at', 'desc')->paginate(10);
+        $purchase_orders = $user->purchase_orders()->orderBy('created_at', 'desc')->paginate(10);
         $data = [
             'user' => $user,
-            'sales_orders' => $sales_orders,
+            'purchase_orders' => $purchase_orders,
         ];
         }
 
-        // dashboardビューでそれらを表示（テキスト準拠）
-        /*
-        return view('dashboard', $data);
-        */
-
-        // これはいける？
-        return view('orders.sales_orders_page', $data);
+        return view('orders.purchase_orders_page', $data);
         
     }
 
@@ -39,14 +33,14 @@ class SalesOrdersController extends Controller
     {
         // バリデーション
         $request->validate([
-            'sales_abstract' => 'required|max:2000',
+            'purchase_abstract' => 'required|max:2000',
             'title' => 'required|max:2000',
         ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
-        $request->user()->sales_orders()->create([
+        $request->user()->purchase_orders()->create([
             'title' => $request->title, 
-            'sales_abstract' => $request->sales_abstract,
+            'purchase_abstract' => $request->purchase_abstract,
         ]);
 
         // 前のURLへリダイレクトさせる
@@ -56,11 +50,11 @@ class SalesOrdersController extends Controller
     public function destroy($id)
     {
         // idの値で発注を検索して取得
-        $sales_order = \App\Models\SalesOrder::findOrFail($id);
+        $purchase_order = \App\Models\PurchaseOrder::findOrFail($id);
 
         // 認証済みユーザがその投稿の所有者である場合は投稿を削除
-        if (\Auth::id() === $sales_order->user_id) {
-            $sales_order->delete();
+        if (\Auth::id() === $purchase_order->user_id) {
+            $purchase_order->delete();
             return back()
                 ->with('発注は削除されました');
         }

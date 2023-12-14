@@ -4,7 +4,7 @@
     {{-- 発注者ページへのリンク --}}
     <li><a class = "link link-hover" href="{{ route('sales-orders', Auth::user()->id) }}">仕事を依頼する</a></li> 
     {{-- 受注者ページへのリンク --}}
-    <li><a class = "link link-hover" href="#">仕事を受注する</a></li>
+    <li><a class = "link link-hover" href="{{ route('purchase-orders', Auth::user()->id) }}">仕事を受注する</a></li>
     {{-- タイムラインへのリンク（トップページとくっつけてもいいかも？） --}}
     <li><a class = "link link-hover" href="#">仕事を探す</a></li>
     <li class="divider lg:hidden"></li>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SalesOrdersController;
+use App\Http\Controllers\PurchaseOrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,6 @@ use App\Http\Controllers\SalesOrdersController;
  */
 
 
-// ダッシュボード再構成
 Route::get('/', function () {
     return view('dashboard');
  });
@@ -32,21 +32,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
  })->middleware(['auth'])->name('dashboard');
 
-
-// テキスト準拠
-/*
-Route::get('/', [SalesOrdersController::class, 'index']);
-Route::get('/dashboard', [SalesOrdersController::class, 'index'])->middleware(['auth'])->name('dashboard');
-*/
-
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UsersController::class, ['only' => ['index', 'show']]);
     Route::resource('sales_orders', SalesOrdersController::class, ['only' => ['store', 'destroy']]);
-    // 元のルーティング
-    // Route::resource('sales_orders', SalesOrdersController::class, ['only' => ['store', 'destroy']]);
+    Route::resource('purchase_orders', PurchaseOrdersController::class, ['only' => ['store', 'destroy']]);
 });
 
-
+// 「仕事を依頼する」ページ
 Route::get('sales_orders_page', [SalesOrdersController::class, 'index'])->name('sales-orders');
+// 「仕事を受注する」ページ
+Route::get('purchase_orders_page', [PurchaseOrdersController::class, 'index'])->name('purchase-orders');
