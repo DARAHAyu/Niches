@@ -10,8 +10,6 @@
             <div class = "sm:col-span-2">
                 
                 @include('orders.form')
-                
-                @include('orders.sales_orders')
             </div>
         </div>
     @else

@@ -8,6 +8,7 @@ use App\Models\SalesOrder;
 
 class SalesOrdersController extends Controller
 {
+    // 自分が作成した依頼を表示
     public function index()
     {
         $data = [];
@@ -16,8 +17,7 @@ class SalesOrdersController extends Controller
         // 認証済みユーザを取得
         $user = \Auth::user();
         
-        // ユーザの投稿の一覧を作成日時の降順で取得
-        // （後のChapterで他ユーザの投稿も取得するように変更するが、現時点ではこのユーザの投稿のみ取得する
+        // 自分の作成した依頼の一覧を作成日時の降順で取得
         $sales_orders = $user->sales_orders()->orderBy('created_at', 'desc')->paginate(10);
         $data = [
             'user' => $user,
@@ -25,15 +25,31 @@ class SalesOrdersController extends Controller
         ];
         }
 
-        // dashboardビューでそれらを表示（テキスト準拠）
-        /*
-        return view('dashboard', $data);
-        */
-
-        // これはいける？
         return view('orders.sales_orders_page', $data);
         
     }
+
+    // 自分以外の全ユーザの依頼を表示。
+    public function index2()
+    {
+        $data = [];
+
+        if (\Auth::check()) { // 認証済みの場合
+        // 認証済みユーザを取得
+        $user = \Auth::user();
+        
+        // 自分以外のユーザが作成した依頼の一覧を作成日時の降順で取得
+        $sales_orders = SalesOrder::where('user_id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+        $data = [
+            'user' => $user,
+            'sales_orders' => $sales_orders,
+        ];
+        }
+
+        return view('orders.search_sales', $data);
+        
+    }
+    
 
     public function store(Request $request)
     {
