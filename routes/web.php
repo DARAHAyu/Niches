@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SalesOrdersController;
 use App\Http\Controllers\PurchaseOrdersController;
+use App\Http\Controllers\UserDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,6 @@ Route::get('purchase_orders_page', [PurchaseOrdersController::class, 'index'])->
 Route::get('search/sales', [SalesOrdersController::class, 'index2'])->name('search-sales');
 // 「提案を探す」ページ
 Route::get('search/purchase', [PurchaseOrdersController::class, 'index2'])->name('search-purchase');
+// 「プロフィール」ページ
+Route::get('profile/show/{id}', [UserDetailsController::class, 'show'])->name("profile-show");
+Route::post('profile/store', [UserDetailsController::class, 'store'])->name("profile-store");

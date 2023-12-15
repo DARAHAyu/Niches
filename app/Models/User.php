@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(PurchaseOrder::class);
     }
 
+    public function user_details()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
+
     public function loadRelationshipCounts()
     {
         $this->loadCount('sales_orders', 'purchase_orders');

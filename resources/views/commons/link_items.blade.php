@@ -1,6 +1,6 @@
 @if (Auth::check())
     {{-- ユーザプロフィールページへのリンク --}}
-    <li><a class="link link-hover" href="{{ route('users.show', Auth::user()->id) }}">{{ Auth::user()->name }}のプロフィール</a></li>
+    <li><a class="link link-hover" href="{{ route('profile-show', Auth::user()->id) }}">{{ Auth::user()->name }}のプロフィール</a></li>
     {{-- 発注者ページへのリンク --}}
     <li><a class = "link link-hover" href="{{ route('sales-orders', Auth::user()->id) }}">依頼文を作成する</a></li> 
     {{-- 受注者ページへのリンク --}}
