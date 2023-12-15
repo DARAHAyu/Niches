@@ -29,6 +29,27 @@ class PurchaseOrdersController extends Controller
         
     }
 
+    public function index2()
+    {
+        $data = [];
+
+        if (\Auth::check()) { // 認証済みの場合
+        // 認証済みユーザを取得
+        $user = \Auth::user();
+        
+        // ユーザの投稿の一覧を作成日時の降順で取得
+        // （後のChapterで他ユーザの投稿も取得するように変更するが、現時点ではこのユーザの投稿のみ取得する
+        $purchase_orders = PurchaseOrder::where('user_id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+        $data = [
+            'user' => $user,
+            'purchase_orders' => $purchase_orders,
+        ];
+        }
+
+        return view('orders.search_purchase', $data);
+        
+    }
+
     public function store(Request $request)
     {
         // バリデーション
