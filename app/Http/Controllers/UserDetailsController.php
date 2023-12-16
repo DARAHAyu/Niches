@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;   
 use App\Models\User;    
+use App\Models\UserDetail;
 
 class UserDetailsController extends Controller
 {
@@ -22,6 +23,8 @@ class UserDetailsController extends Controller
 
     public function store(Request $request)
     {
+        
+
         // バリデーション
         $request->validate([
             'nickname' => 'required|max:30',
@@ -31,7 +34,7 @@ class UserDetailsController extends Controller
         ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
-        $request->user()->user_details()->create([
+        $userDetail = $request->user()->user_details()->create([
             'nickname' => $request->nickname, 
             'age' => $request->age,
             'occupation' => $request->occupation,
@@ -39,6 +42,8 @@ class UserDetailsController extends Controller
         ]);
 
         // 前のURLへリダイレクトさせる
-        return back();
+        return view('details.index', [
+            'userDetail' => $userDetail,
+        ]);
     }
 }
