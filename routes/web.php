@@ -50,5 +50,9 @@ Route::get('search/sales', [SalesOrdersController::class, 'index2'])->name('sear
 // 「提案を探す」ページ
 Route::get('search/purchase', [PurchaseOrdersController::class, 'index2'])->name('search-purchase');
 // 「プロフィール」ページ
-Route::get('profile/index/{id}', [UserDetailsController::class, 'index'])->name("profile-index");
-Route::post('profile/store', [UserDetailsController::class, 'store'])->name("profile-store");
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('profile/index/{id}', [UserDetailsController::class, 'index'])->name("profile-index");
+    Route::post('profile/store/{id}', [UserDetailsController::class, 'store'])->name("profile-store");
+    Route::get('profile/edit/{id}', [UserDetailsController::class, 'edit'])->name("profile-edit");
+    Route::put('profile/update/{id}', [UserDetailsController::class, 'update'])->name("profile-update");
+});
