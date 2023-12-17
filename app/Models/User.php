@@ -61,4 +61,10 @@ class User extends Authenticatable
     {
         $this->loadCount('sales_orders', 'purchase_orders');
     }
+
+    // プロフィールを登録しているかどうかを調べる
+    public function hasProfileDetails()
+    {
+        return $this->user_details()->exists();
+    }
 }

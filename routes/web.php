@@ -50,5 +50,5 @@ Route::get('search/sales', [SalesOrdersController::class, 'index2'])->name('sear
 // 「提案を探す」ページ
 Route::get('search/purchase', [PurchaseOrdersController::class, 'index2'])->name('search-purchase');
 // 「プロフィール」ページ
-Route::get('profile/show/{id}', [UserDetailsController::class, 'show'])->name("profile-show");
+Route::get('profile/index/{id}', [UserDetailsController::class, 'index'])->name("profile-index");
 Route::post('profile/store', [UserDetailsController::class, 'store'])->name("profile-store");

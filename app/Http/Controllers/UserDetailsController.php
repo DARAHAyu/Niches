@@ -10,6 +10,20 @@ use App\Models\UserDetail;
 
 class UserDetailsController extends Controller
 {
+    // プロフィールのトップページ
+    public function index($id)
+    {
+        $user = User::findOrFail($id);
+
+        $latestUserDetail = $user->user_details()->latest()->first();
+        
+        return view('details.index', [
+            'user' => $user,
+            'latestUserDetail' => $latestUserDetail
+        ]);
+    }
+
+    /*
     public function show($id)
     {
         // idの値でユーザを検索して取得
@@ -20,11 +34,10 @@ class UserDetailsController extends Controller
             'user' => $user,
         ]);
     }
+    */
 
     public function store(Request $request)
     {
-        
-
         // バリデーション
         $request->validate([
             'nickname' => 'required|max:30',
