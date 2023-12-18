@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth']], function() {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('my/purchase/index/{id}', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
     Route::get('my/purchase/create/{id}', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
-    ROute::post('my/sales/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
+    ROute::post('my/purchase/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
 });
 
 // 「仕事を受注する」ページ
