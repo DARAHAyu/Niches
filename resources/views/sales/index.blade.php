@@ -15,7 +15,8 @@
                                 <p>作成日時：{{ $mySale->created_at }}</p>
                                 <p>最終更新日：{{ $mySale->updated_at }}</p>
                                 <p>タイトル：{{ $mySale->title }}</p>
-                                <p>提案の概要：{{ $mySale->sales_abstract }}</p>
+                                <p>依頼の概要：{{ $mySale->sales_abstract }}</p>
+                                <a href="{{ route('sales-show', ['userId' => $user->id, 'saleId' => $mySale->id]) }}" class = "btn normal-case">依頼の詳細</a>
                             </div>
                         </div>
                     @endforeach

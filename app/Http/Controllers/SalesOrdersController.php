@@ -66,6 +66,19 @@ class SalesOrdersController extends Controller
         return back()
             ->with('削除に失敗しました');
     }
+
+    public function show($userId, $saleId) 
+    {
+        $user = User::findOrFail($userId);
+
+        $sale = SalesOrder::findOrFail($saleId);
+
+        return view('sales.show', [
+            'user' => $user,
+            'sale' => $sale,
+        ]);
+
+    }
     
     // 自分以外の全ユーザの依頼を表示。
     public function index2()

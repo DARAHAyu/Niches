@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/sales/index/{id}', [SalesOrdersController::class, 'index'])->name('my-sales');
     Route::get('my/sales/create/{id}', [SalesOrdersController::class, 'create'])->name('sales-create');
     Route::post('my/sales/store', [SalesOrdersController::class, 'store'])->name('sales-store');
+    Route::get('sales/show/{userId}/{saleId}', [SalesOrdersController::class, 'show'])->name('sales-show');
 });
 
 // 提案に関するページ
