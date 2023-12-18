@@ -66,6 +66,19 @@ class PurchaseOrdersController extends Controller
         return back()
             ->with('削除に失敗しました');
     }
+
+    public function show($userId, $purchaseId) 
+    {
+        $user = User::findOrFail($userId);
+
+        $purchase = PurchaseOrder::findOrFail($purchaseId);
+
+        return view('purchase.show', [
+            'user' => $user,
+            'purchase' => $purchase,
+        ]);
+
+    }
     
     public function index2()
     {

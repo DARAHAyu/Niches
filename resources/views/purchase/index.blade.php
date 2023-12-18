@@ -16,6 +16,7 @@
                                 <p>最終更新日：{{ $myPurchase->updated_at }}</p>
                                 <p>タイトル：{{ $myPurchase->title }}</p>
                                 <p>提案の概要：{{ $myPurchase->purchase_abstract }}</p>
+                                <a href="{{ route('purchase-show', ['userId' => $user->id, 'purchaseId' => $myPurchase->id]) }}" class = "btn normal-case">提案の詳細</a>
                             </div>
                         </div>
                     @endforeach
