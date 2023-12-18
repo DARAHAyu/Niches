@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/purchase/create/{id}', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
     Route::post('my/purchase/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
     Route::get('purchase/show/{userId}/{purchaseId}', [PurchaseOrdersController::class, 'show'])->name('purchase-show');
+    // 「提案を探す」ページ
+    Route::get('others/purchases/index/{id}', [PurchaseOrdersController::class, 'othersPurchases'])->name('others-purchases');
 });
 
 // 「プロフィール」ページ

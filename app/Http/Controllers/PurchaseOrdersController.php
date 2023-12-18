@@ -100,4 +100,16 @@ class PurchaseOrdersController extends Controller
         return view('orders.search_purchase', $data);
         
     }
+
+    public function othersPurchases($id) 
+    {
+        $user = User::findOrFail($id);
+
+        $othersPurchases = PurchaseOrder::where('user_id', '!=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('purchase.others_purchases', [
+            'user' => $user,
+            'othersPurchases' => $othersPurchases,
+        ]);
+    }
 }
