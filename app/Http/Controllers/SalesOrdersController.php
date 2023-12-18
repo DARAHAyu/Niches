@@ -3,30 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 use App\Models\SalesOrder;
+use App\Models\User;
 
 class SalesOrdersController extends Controller
 {
     // 自分が作成した依頼を表示
-    public function index()
-    {
-        $data = [];
+    public function index($id)
+    { 
+        $user = User::findOrFail($id);
 
-        if (\Auth::check()) { // 認証済みの場合
-        // 認証済みユーザを取得
-        $user = \Auth::user();
-        
-        // 自分の作成した依頼の一覧を作成日時の降順で取得
-        $sales_orders = $user->sales_orders()->orderBy('created_at', 'desc')->paginate(10);
-        $data = [
+        $mySales = $user->sales_orders()->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('sales.index', [
             'user' => $user,
-            'sales_orders' => $sales_orders,
-        ];
-        }
-
-        return view('orders.sales_orders_page', $data);
-        
+            'mySales' => $mySales,
+        ]);
     }
 
     // 自分以外の全ユーザの依頼を表示。
@@ -34,9 +28,9 @@ class SalesOrdersController extends Controller
     {
         $data = [];
 
-        if (\Auth::check()) { // 認証済みの場合
+        if (Auth::check()) { // 認証済みの場合
         // 認証済みユーザを取得
-        $user = \Auth::user();
+        $user = Auth::user();
         
         // 自分以外のユーザが作成した依頼の一覧を作成日時の降順で取得
         $sales_orders = SalesOrder::where('user_id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
@@ -75,7 +69,7 @@ class SalesOrdersController extends Controller
         $sales_order = \App\Models\SalesOrder::findOrFail($id);
 
         // 認証済みユーザがその投稿の所有者である場合は投稿を削除
-        if (\Auth::id() === $sales_order->user_id) {
+        if (Auth::id() === $sales_order->user_id) {
             $sales_order->delete();
             return back()
                 ->with('発注は削除されました');
