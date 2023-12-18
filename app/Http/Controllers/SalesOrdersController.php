@@ -81,23 +81,15 @@ class SalesOrdersController extends Controller
     }
     
     // 自分以外の全ユーザの依頼を表示。
-    public function index2()
+    public function othersSales($id)
     {
-        $data = [];
+        $user = User::findOrFail($id);
 
-        if (Auth::check()) { // 認証済みの場合
-        // 認証済みユーザを取得
-        $user = Auth::user();
-        
-        // 自分以外のユーザが作成した依頼の一覧を作成日時の降順で取得
-        $sales_orders = SalesOrder::where('user_id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
-        $data = [
+        $othersSales = SalesOrder::where('user_id', '!=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('sales.others_sales', [
             'user' => $user,
-            'sales_orders' => $sales_orders,
-        ];
-        }
-
-        return view('orders.search_sales', $data);
-        
+            'othersSales' => $othersSales,
+        ]);
     }
 }

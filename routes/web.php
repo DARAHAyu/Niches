@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/sales/create/{id}', [SalesOrdersController::class, 'create'])->name('sales-create');
     Route::post('my/sales/store', [SalesOrdersController::class, 'store'])->name('sales-store');
     Route::get('sales/show/{userId}/{saleId}', [SalesOrdersController::class, 'show'])->name('sales-show');
+    // 「依頼を探す」ページ
+    Route::get('others/sales/index/{id}', [SalesOrdersController::class, 'othersSales'])->name('others-sales');
 });
 
 // 提案に関するページ
@@ -56,12 +58,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('my/purchase/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
     Route::get('purchase/show/{userId}/{purchaseId}', [PurchaseOrdersController::class, 'show'])->name('purchase-show');
 });
-
-// 「仕事を受注する」ページ
-Route::get('purchase_orders_page', [PurchaseOrdersController::class, 'index'])->name('purchase-orders');
-
-// 「提案を探す」ページ
-Route::get('search/purchase', [PurchaseOrdersController::class, 'index2'])->name('search-purchase');
 
 // 「プロフィール」ページ
 Route::group(['middleware' => ['auth']], function() {
