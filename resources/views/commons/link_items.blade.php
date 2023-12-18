@@ -4,7 +4,7 @@
     {{-- 発注者ページへのリンク --}}
     <li><a class = "link link-hover" href="{{ route('sales-create', Auth::user()->id) }}">依頼文を作成する</a></li> 
     {{-- 受注者ページへのリンク --}}
-    <li><a class = "link link-hover" href="#">提案文を作成する</a></li>
+    <li><a class = "link link-hover" href="{{ route('purchase-create', Auth::user()->id) }}">提案文を作成する</a></li>
     {{-- 自分が作成した依頼一覧ページへのリンク --}}
     <li><a class = "link link-hover" href="{{ route('my-sales', Auth::user()->id) }}">自分が作成した依頼</a></li> 
     {{-- 自分が作成した提案一覧ページへのリンク --}}

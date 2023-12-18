@@ -49,7 +49,12 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 // 提案に関するページ
-Route::get('my/purchase/index/{id}', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('my/purchase/index/{id}', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
+    Route::get('my/purchase/create/{id}', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
+    ROute::post('my/sales/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
+});
+
 // 「仕事を受注する」ページ
 Route::get('purchase_orders_page', [PurchaseOrdersController::class, 'index'])->name('purchase-orders');
 

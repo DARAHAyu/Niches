@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 use App\Models\PurchaseOrder;
 use App\Models\User;
@@ -22,25 +23,13 @@ class PurchaseOrdersController extends Controller
         ]);
     }
 
-    public function index2()
+    public function create($id)
     {
-        $data = [];
+        $user = User::findOrFail($id);
 
-        if (\Auth::check()) { // 認証済みの場合
-        // 認証済みユーザを取得
-        $user = \Auth::user();
-        
-        // ユーザの投稿の一覧を作成日時の降順で取得
-        // （後のChapterで他ユーザの投稿も取得するように変更するが、現時点ではこのユーザの投稿のみ取得する
-        $purchase_orders = PurchaseOrder::where('user_id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
-        $data = [
+        return view('purchase.create', [
             'user' => $user,
-            'purchase_orders' => $purchase_orders,
-        ];
-        }
-
-        return view('orders.search_purchase', $data);
-        
+        ]);
     }
 
     public function store(Request $request)
@@ -67,7 +56,7 @@ class PurchaseOrdersController extends Controller
         $purchase_order = \App\Models\PurchaseOrder::findOrFail($id);
 
         // 認証済みユーザがその投稿の所有者である場合は投稿を削除
-        if (\Auth::id() === $purchase_order->user_id) {
+        if (Auth::id() === $purchase_order->user_id) {
             $purchase_order->delete();
             return back()
                 ->with('発注は削除されました');
@@ -76,5 +65,26 @@ class PurchaseOrdersController extends Controller
         // 前のURLへリダイレクトさせる
         return back()
             ->with('削除に失敗しました');
+    }
+    
+    public function index2()
+    {
+        $data = [];
+
+        if (Auth::check()) { // 認証済みの場合
+        // 認証済みユーザを取得
+        $user = Auth::user();
+        
+        // ユーザの投稿の一覧を作成日時の降順で取得
+        // （後のChapterで他ユーザの投稿も取得するように変更するが、現時点ではこのユーザの投稿のみ取得する
+        $purchase_orders = PurchaseOrder::where('user_id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+        $data = [
+            'user' => $user,
+            'purchase_orders' => $purchase_orders,
+        ];
+        }
+
+        return view('orders.search_purchase', $data);
+        
     }
 }
