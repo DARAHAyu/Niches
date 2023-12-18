@@ -42,7 +42,12 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 // 依頼に関するページ
-Route::get('my/sales/index/{id}', [SalesOrdersController::class, 'index'])->name('my-sales');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('my/sales/index/{id}', [SalesOrdersController::class, 'index'])->name('my-sales');
+    Route::get('my/sales/create/{id}', [SalesOrdersController::class, 'create'])->name('sales-create');
+    Route::post('my/sales/store', [SalesOrdersController::class, 'store'])->name('sales-store');
+});
+
 // 提案に関するページ
 Route::get('my/purchase/index/{id}', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
 // 「仕事を受注する」ページ
