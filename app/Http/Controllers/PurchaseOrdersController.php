@@ -5,28 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\PurchaseOrder;
+use App\Models\User;
 
 class PurchaseOrdersController extends Controller
 {
-    public function index()
-    {
-        $data = [];
+    // 自分が作成した依頼を表示
+    public function index($id)
+    { 
+        $user = User::findOrFail($id);
 
-        if (\Auth::check()) { // 認証済みの場合
-        // 認証済みユーザを取得
-        $user = \Auth::user();
-        
-        // ユーザの投稿の一覧を作成日時の降順で取得
-        // （後のChapterで他ユーザの投稿も取得するように変更するが、現時点ではこのユーザの投稿のみ取得する
-        $purchase_orders = $user->purchase_orders()->orderBy('created_at', 'desc')->paginate(10);
-        $data = [
+        $myPurchase = $user->purchase_orders()->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('purchase.index', [
             'user' => $user,
-            'purchase_orders' => $purchase_orders,
-        ];
-        }
-
-        return view('orders.purchase_orders_page', $data);
-        
+            'myPurchase' => $myPurchase,
+        ]);
     }
 
     public function index2()

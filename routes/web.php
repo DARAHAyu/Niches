@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function() {
 
 // 依頼に関するページ
 Route::get('my/sales/index/{id}', [SalesOrdersController::class, 'index'])->name('my-sales');
+// 提案に関するページ
+Route::get('my/purchase/index/{id}', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
 // 「仕事を受注する」ページ
 Route::get('purchase_orders_page', [PurchaseOrdersController::class, 'index'])->name('purchase-orders');
 

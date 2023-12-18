@@ -8,7 +8,7 @@
     {{-- 自分が作成した依頼一覧ページへのリンク --}}
     <li><a class = "link link-hover" href="{{ route('my-sales', Auth::user()->id) }}">自分が作成した依頼</a></li> 
     {{-- 自分が作成した提案一覧ページへのリンク --}}
-    <li><a class = "link link-hover" href="#">自分が作成した提案</a></li> 
+    <li><a class = "link link-hover" href="{{ route('my-purchase', Auth::user()->id) }}">自分が作成した提案</a></li> 
     {{-- 依頼タイムラインへのリンク（トップページとくっつけてもいいかも？） --}}
     <li><a class = "link link-hover" href="#">依頼を探す</a></li>
     {{-- 提案タイムラインへのリンク（トップページとくっつけてもいいかも？） --}}
