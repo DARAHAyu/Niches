@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Message; 
 use App\Models\User;
-use App\Modles\MessageRoomUser;
+use App\Models\MessageRoom;
 
 class MessagesController extends Controller
 {
@@ -50,12 +50,15 @@ class MessagesController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $message = $user->messages()->create([
+        $messageRoom = new MessageRoom();
+        $messageRoom->save();
+
+        $user->messages()->create([
             'message' => $request->message,
+            'message_room_id' => $messageRoom->id,
         ]);
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        return back();
     }
 
     /**
