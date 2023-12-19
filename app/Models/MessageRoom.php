@@ -10,4 +10,9 @@ class MessageRoom extends Model
     use HasFactory;
 
     protected $fillable = ['id'];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

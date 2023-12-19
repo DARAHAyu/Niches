@@ -15,4 +15,9 @@ class Message extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function message_room()
+    {
+        return $this->belongsTo(MessageRoom::class);
+    }
 }
