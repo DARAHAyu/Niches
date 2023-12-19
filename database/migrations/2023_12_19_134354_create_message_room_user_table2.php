@@ -14,12 +14,17 @@
             {
                 Schema::create("message_room_user", function (Blueprint $table) {
 
-						$table->increments('id');
-						$table->integer('user_id')->unsigned();
-						$table->integer('message_room_id')->unsigned();
-						//$table->foreign("user_id")->references("id")->on("users");
-						//$table->foreign("message_room_id")->references("id")->on("message_rooms");
+						$table->id();
+						$table->unsignedBigInteger('user_id')->unsigned();
+						$table->unsignedBigInteger('message_room_id')->unsigned();
+                        $table->timestamps();
 
+                        // 外部キー制約
+						$table->foreign("user_id")->references("id")->on("users");
+						$table->foreign("message_room_id")->references("id")->on("message_rooms");
+
+                        // 一度保存したトークルームの関係を何度も保存しないように
+                        $table->unique(['user_id', 'message_room_id']);
 
 
 						// ----------------------------------------------------

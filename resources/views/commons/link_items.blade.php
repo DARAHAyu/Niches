@@ -13,6 +13,8 @@
     <li><a class = "link link-hover" href="{{ route('others-sales', Auth::id()) }}">依頼を探す</a></li>
     {{-- 提案タイムラインへのリンク（トップページとくっつけてもいいかも？） --}}
     <li><a class = "link link-hover" href="{{ route('others-purchases', Auth::id()) }}">提案を探す</a></li>
+    {{-- メッセージへのリンク --}}
+    <li><a class = "link link-hover" href="{{ route('others-purchases', Auth::id()) }}">メッセージ</a></li>
     <li class="divider lg:hidden"></li>
     {{-- ログアウトへのリンク --}}
     <li><a class="link link-hover" href="#" onclick="event.preventDefault();this.closest('form').submit();">ログアウト</a></li>

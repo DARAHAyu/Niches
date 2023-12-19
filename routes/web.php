@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,4 +68,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('profile/store/{id}', [UserDetailsController::class, 'store'])->name("profile-store");
     Route::get('profile/edit/{id}', [UserDetailsController::class, 'edit'])->name("profile-edit");
     Route::put('profile/update/{id}', [UserDetailsController::class, 'update'])->name("profile-update");
+});
+
+// メッセージページ
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('my/messages/create/{id}', [MessagesController::class, 'create'])->name('messages-create');
+    Route::post('my/messages/store/{id}', [MessagesController::class, 'store'])->name('messages-store');
 });

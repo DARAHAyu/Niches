@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Message;
+use App\Models\Message; 
+use App\Models\User;
+use App\Modles\MessageRoomUser;
 
 class MessagesController extends Controller
 {
@@ -29,13 +31,12 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $message = new Message;
+        $user = User::findOrFail($id);
 
-        // メッセージ作成ビューを表示
         return view('messages.create', [
-            'message' => $message,
+            'user' => $user,
         ]);
     }
 
@@ -45,12 +46,13 @@ class MessagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        // メッセージを作成
-        $message = new Message;
-        $message->message = $request->content;
-        $message->save();
+        $user = User::findOrFail($id);
+
+        $message = $user->messages()->create([
+            'message' => $request->message,
+        ]);
 
         // トップページへリダイレクトさせる
         return redirect('/');
@@ -70,7 +72,7 @@ class MessagesController extends Controller
         // メッセージ詳細ビューでそれを表示
         return view('messages.show', [
             'message' => $message,
-        ])
+        ]);
     }
 
     /**

@@ -7,17 +7,15 @@
     </div>
 
     <div class = "flex justify-center">
-        <form method="POST" action="{{ route('messages.store') }}" class="w-1/2">
+        <form method="POST" action="{{ route('messages-store', $user->id) }}" class="w-1/2">
             @csrf
-
                 <div class="form-control my-4">
                     <label for="content" class="label">
                         <span class="label-text">メッセージ:</span>
                     </label>
-                    <input type="text" name="content" class="input input-bordered w-full">
+                    <input type="text" name="message" class="input input-bordered w-full">
                 </div>
-
-            <button type="submit" class="btn btn-primary btn-outline">投稿</button>
+            <button type="submit" class="btn btn-primary btn-outline">送信</button>
         </form>
     </div>
 @endsection

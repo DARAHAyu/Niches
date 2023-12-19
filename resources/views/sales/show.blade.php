@@ -7,7 +7,7 @@
                 @include('users.card')
 
                 @if (Auth::id() != $user->id)
-                    <a href="{{ route('sales-create', $user->id) }}" class = "btn btn-primary btn-block normal-case">このユーザに連絡する</a>
+                    <a href="{{ route('messages-create', $user->id) }}" class = "btn btn-primary btn-block normal-case">このユーザに連絡する</a>
                 @endif
             </aside>
             <div class="sm:col-span-2 mt-4">
