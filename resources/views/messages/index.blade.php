@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class = "prose ml-4">
         <h2>メッセージ一覧</h2>
     </div>
@@ -24,8 +23,4 @@
             </tbody>
         </table>
     @endif
-
-    {{-- 新規メッセージ作成ページへのリンク --}}
-    <a class = "btn btn-primary" href = "{{ route('messages.create') }}">新規メッセージの投稿</a>
-    
 @endsection

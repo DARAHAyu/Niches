@@ -74,4 +74,5 @@ Route::group(['middleware' => ['auth']], function() {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('my/messages/create/{id}', [MessagesController::class, 'create'])->name('messages-create');
     Route::post('my/messages/store/{id}', [MessagesController::class, 'store'])->name('messages-store');
+    Route::get('my/messages/index/{id}', [MessagesController::class, 'index'])->name('messages-index');
 });

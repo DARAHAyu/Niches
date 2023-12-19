@@ -15,13 +15,14 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        // メッセージ一覧を取得
-        $messages = Message::all();
+        $user = User::findOrFail($id);
 
-        // メッセージ一覧ビューでそれを表示
+        $messages = $user->messages()->get();
+
         return view('messages.index', [
+            'user' => $user,
             'messages' => $messages,
         ]);
     }
