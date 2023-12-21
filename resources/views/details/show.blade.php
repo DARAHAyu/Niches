@@ -11,7 +11,7 @@
             <p>職業：{{ $latestUserDetail->occupation }}</p>
             <p>得意領域：{{ $latestUserDetail->business_area }}</p>
 
-            @if(auth()->user()->id == $user->id)
+            @if(Auth::id() == $user->id)
                 <a href="{{ route('profile-edit', $user->id)}}" class = "btn btn-primary">プロフィールを編集する</a>
             @endif
         </div>

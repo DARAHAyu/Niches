@@ -8,7 +8,7 @@
         <div class="sm:col-span-2 mt-4">
             @if (Auth::id() == $user->id)
                 <div class="mt-4">
-                    <form method="POST" action="{{ route('profile-store', $user->id) }}">
+                    <form method="POST" action="{{ route('profile-store') }}">
                         @csrf
                     
                         <div class="form-control mt-4">

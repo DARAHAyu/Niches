@@ -64,10 +64,10 @@ Route::group(['middleware' => ['auth']], function() {
 
 // 「プロフィール」ページ
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('profile/index/{id}', [UserDetailsController::class, 'index'])->name("profile-index");
-    Route::post('profile/store/{id}', [UserDetailsController::class, 'store'])->name("profile-store");
-    Route::get('profile/edit/{id}', [UserDetailsController::class, 'edit'])->name("profile-edit");
-    Route::put('profile/update/{id}', [UserDetailsController::class, 'update'])->name("profile-update");
+    Route::get('profile/index', [UserDetailsController::class, 'index'])->name("profile-index");
+    Route::post('profile/store', [UserDetailsController::class, 'store'])->name("profile-store");
+    Route::get('profile/edit', [UserDetailsController::class, 'edit'])->name("profile-edit");
+    Route::put('profile/update', [UserDetailsController::class, 'update'])->name("profile-update");
 });
 
 // メッセージページ

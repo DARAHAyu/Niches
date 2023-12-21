@@ -11,9 +11,9 @@ use App\Models\UserDetail;
 class UserDetailsController extends Controller
 {
     // プロフィールのトップページ
-    public function index($id)
+    public function index()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $latestUserDetail = $user->user_details()->latest()->first();
         
@@ -23,9 +23,9 @@ class UserDetailsController extends Controller
         ]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         // バリデーション
         $request->validate([
@@ -50,9 +50,9 @@ class UserDetailsController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $latestUserDetail = $user->user_details()->latest()->first();
 
@@ -62,9 +62,9 @@ class UserDetailsController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         // バリデーション
         $request->validate([
