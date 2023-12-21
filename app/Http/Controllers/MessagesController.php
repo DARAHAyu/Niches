@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;   
 
 use App\Models\Message; 
 use App\Models\User;
@@ -15,14 +16,11 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $user = User::findOrFail($id);
-
-        $messages = $user->messages()->get();
+        $messages = Auth::user()->messages()->get();
 
         return view('messages.index', [
-            'user' => $user,
             'messages' => $messages,
         ]);
     }
@@ -32,9 +30,9 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         return view('messages.create', [
             'user' => $user,
@@ -47,9 +45,9 @@ class MessagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $messageRoom = new MessageRoom();
         $messageRoom->save();

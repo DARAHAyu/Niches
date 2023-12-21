@@ -7,7 +7,7 @@
     </div>
 
     <div class = "flex justify-center">
-        <form method="POST" action="{{ route('messages-store', $user->id) }}" class="w-1/2">
+        <form method="POST" action="{{ route('messages-store') }}" class="w-1/2">
             @csrf
                 <div class="form-control my-4">
                     <label for="content" class="label">

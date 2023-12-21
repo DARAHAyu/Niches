@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 // メッセージページ
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('my/messages/create/{id}', [MessagesController::class, 'create'])->name('messages-create');
-    Route::post('my/messages/store/{id}', [MessagesController::class, 'store'])->name('messages-store');
-    Route::get('my/messages/index/{id}', [MessagesController::class, 'index'])->name('messages-index');
+    Route::get('my/messages/create', [MessagesController::class, 'create'])->name('messages-create');
+    Route::post('my/messages/store', [MessagesController::class, 'store'])->name('messages-store');
+    Route::get('my/messages/index', [MessagesController::class, 'index'])->name('messages-index');
 });
