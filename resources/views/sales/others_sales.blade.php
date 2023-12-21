@@ -12,7 +12,7 @@
                                 <p>最終更新日：{{ $othersSale->updated_at }}</p>
                                 <p>タイトル：{{ $othersSale->title }}</p>
                                 <p>依頼の概要：{{ $othersSale->sales_abstract }}</p>
-                                <a href="{{ route('sales-show', ['userId' => $othersSale->user_id, 'saleId' => $othersSale->id]) }}" class = "btn normal-case">依頼の詳細</a>
+                                <a href="{{ route('sales-show', ['saleId' => $othersSale->id]) }}" class = "btn normal-case">依頼の詳細</a>
                             </div>
                         </div>
                     @endforeach

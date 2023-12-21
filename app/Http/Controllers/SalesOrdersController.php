@@ -11,9 +11,9 @@ use App\Models\User;
 class SalesOrdersController extends Controller
 {
     // 自分が作成した依頼を表示
-    public function index($id)
+    public function index()
     { 
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $mySales = $user->sales_orders()->orderBy('created_at', 'desc')->paginate(10);
 
@@ -23,9 +23,9 @@ class SalesOrdersController extends Controller
         ]);
     }
 
-    public function create($id)
+    public function create()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         return view('sales.create', [
             'user' => $user,
@@ -67,23 +67,20 @@ class SalesOrdersController extends Controller
             ->with('削除に失敗しました');
     }
 
-    public function show($userId, $saleId) 
+    public function show($saleId) 
     {
-        $user = User::findOrFail($userId);
-
         $sale = SalesOrder::findOrFail($saleId);
 
         return view('sales.show', [
-            'user' => $user,
             'sale' => $sale,
         ]);
 
     }
     
     // 自分以外の全ユーザの依頼を表示。
-    public function othersSales($id)
+    public function othersSales()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $othersSales = SalesOrder::where('user_id', '!=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
 

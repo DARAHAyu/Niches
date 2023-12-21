@@ -44,22 +44,22 @@ Route::group(['middleware' => ['auth']], function() {
 
 // 依頼に関するページ
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('my/sales/index/{id}', [SalesOrdersController::class, 'index'])->name('my-sales');
-    Route::get('my/sales/create/{id}', [SalesOrdersController::class, 'create'])->name('sales-create');
+    Route::get('my/sales/index', [SalesOrdersController::class, 'index'])->name('my-sales');
+    Route::get('my/sales/create', [SalesOrdersController::class, 'create'])->name('sales-create');
     Route::post('my/sales/store', [SalesOrdersController::class, 'store'])->name('sales-store');
-    Route::get('sales/show/{userId}/{saleId}', [SalesOrdersController::class, 'show'])->name('sales-show');
+    Route::get('sales/show/{saleId}', [SalesOrdersController::class, 'show'])->name('sales-show');
     // 「依頼を探す」ページ
-    Route::get('others/sales/index/{id}', [SalesOrdersController::class, 'othersSales'])->name('others-sales');
+    Route::get('others/sales/index', [SalesOrdersController::class, 'othersSales'])->name('others-sales');
 });
 
 // 提案に関するページ
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('my/purchase/index/{id}', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
-    Route::get('my/purchase/create/{id}', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
+    Route::get('my/purchase/index', [PurchaseOrdersController::class, 'index'])->name('my-purchase');
+    Route::get('my/purchase/create', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
     Route::post('my/purchase/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
-    Route::get('purchase/show/{userId}/{purchaseId}', [PurchaseOrdersController::class, 'show'])->name('purchase-show');
+    Route::get('purchase/show/{purchaseId}', [PurchaseOrdersController::class, 'show'])->name('purchase-show');
     // 「提案を探す」ページ
-    Route::get('others/purchases/index/{id}', [PurchaseOrdersController::class, 'othersPurchases'])->name('others-purchases');
+    Route::get('others/purchases/index', [PurchaseOrdersController::class, 'othersPurchases'])->name('others-purchases');
 });
 
 // 「プロフィール」ページ

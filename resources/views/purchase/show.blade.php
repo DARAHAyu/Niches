@@ -4,10 +4,8 @@
     @if (isset($purchase))
         <div class="sm:grid sm:grid-cols-3 sm:gap-10">
             <aside class="mt-4">
-                @include('users.card')
-
-                @if (Auth::id() != $user->id)
-                    <a href="{{ route('#', $user->id) }}" class = "btn btn-primary btn-block normal-case">このユーザに連絡する</a>
+                @if (Auth::id() != $purchase->user_id)
+                    <a href="{{ route('messages-create', $purchase->user_id) }}" class = "btn btn-primary btn-block normal-case">このユーザに連絡する</a>
                 @endif
             </aside>
             <div class="sm:col-span-2 mt-4">

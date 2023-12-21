@@ -11,9 +11,9 @@ use App\Models\User;
 class PurchaseOrdersController extends Controller
 {
     // 自分が作成した依頼を表示
-    public function index($id)
+    public function index()
     { 
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $myPurchase = $user->purchase_orders()->orderBy('created_at', 'desc')->paginate(10);
 
@@ -23,9 +23,9 @@ class PurchaseOrdersController extends Controller
         ]);
     }
 
-    public function create($id)
+    public function create()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         return view('purchase.create', [
             'user' => $user,
@@ -67,14 +67,11 @@ class PurchaseOrdersController extends Controller
             ->with('削除に失敗しました');
     }
 
-    public function show($userId, $purchaseId) 
+    public function show($purchaseId) 
     {
-        $user = User::findOrFail($userId);
-
         $purchase = PurchaseOrder::findOrFail($purchaseId);
 
         return view('purchase.show', [
-            'user' => $user,
             'purchase' => $purchase,
         ]);
 
@@ -101,9 +98,9 @@ class PurchaseOrdersController extends Controller
         
     }
 
-    public function othersPurchases($id) 
+    public function othersPurchases() 
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         $othersPurchases = PurchaseOrder::where('user_id', '!=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
 
