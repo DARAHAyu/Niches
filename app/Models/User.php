@@ -67,6 +67,11 @@ class User extends Authenticatable
         $this->loadCount('sales_orders', 'purchase_orders');
     }
 
+    public function message_rooms()
+    {
+        return $this->belongsToMany(MessageRoom::class, 'message_room_user', 'user_id', 'message_room_id')->withTimestamps();
+    }
+
     // プロフィールを登録しているかどうかを調べる
     public function hasProfileDetails()
     {
