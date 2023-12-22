@@ -77,4 +77,25 @@ class User extends Authenticatable
     {
         return $this->user_details()->exists();
     }
+
+    public function create_message_room($senderId, $receiverId)
+    {
+        // 送信者と受信者の両方が参加している既存のメッセージルームを検索
+        $messageRoom = MessageRoom::whereHas('users', function ($query) use ($senderId) {
+            $query->where('user_id', $senderId);
+        })->whereHas('users', function ($query) use ($receiverId) {
+            $query->where('user_id', $receiverId);
+        })->first();
+
+        // 両者が同じidのメッセージルームに割り当てられていない場合は、新しく作成
+        if (!$messageRoom) {
+            $messageRoom = new MessageRoom();
+            $messageRoom->save();
+
+            // メッセージルームにユーザを関連付ける
+            $messageRoom->users()->attach([$senderId, $receiverId]);
+        }
+
+        return $messageRoom;
+    }
 }
