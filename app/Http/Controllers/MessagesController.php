@@ -30,13 +30,22 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($receiverId)
     {
-        $user = Auth::user();
+        $sender = Auth::user();
+
+        $receiver = User::findOrFail($receiverId);
+
+        $message_room = $sender->create_message_room($sender->id, $receiver->id);
+
+        $messages = $message_room->messages()->get();
 
         return view('messages.create', [
-            'user' => $user,
-        ]);
+            'sender' => $sender,
+            'receiver' => $receiver,
+            'message_room' => $message_room,
+            'messages' => $messages,
+        ]); 
     }
 
     /**
@@ -45,19 +54,30 @@ class MessagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $messageRoomId)
     {
+        
         $user = Auth::user();
-
-        $messageRoom = new MessageRoom();
-        $messageRoom->save();
 
         $user->messages()->create([
             'message' => $request->message,
-            'message_room_id' => $messageRoom->id,
+            'message_room_id' => $messageRoomId,
         ]);
 
         return back();
+    
+
+        /*
+        $user = Auth::user();
+
+        $user->messages()->create([
+            'message' => $request->message,
+        ]);
+        
+        $senderId = Auth::user()->id;
+
+        $message_room = $user->create_message_room($senderId, $receiverId)
+        */
     }
 
     /**
