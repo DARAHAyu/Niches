@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageRoomsController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -75,4 +76,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/messages/create/{receiverId}', [MessagesController::class, 'create'])->name('messages-create');
     Route::post('my/messages/store/{messageRoomId}', [MessagesController::class, 'store'])->name('messages-store');
     Route::get('my/messages/index', [MessagesController::class, 'index'])->name('messages-index');
+});
+
+// MessageRoomモデル
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('my/message-rooms/index', [MessageRoomsController::class, 'index'])->name('rooms-index');
 });

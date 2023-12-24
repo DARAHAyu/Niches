@@ -18,11 +18,21 @@ class MessagesController extends Controller
      */
     public function index()
     {
+        /*
+        $user = Auth::user();
+
+        $message_rooms = $user->message_rooms;
+
         $messages = Auth::user()->messages()->get();
 
-        return view('messages.index', [
+        $senders = $message_rooms->users()->where('user_id', '!=', $user->id)->get();
+
+        return view('message_rooms.index', [
             'messages' => $messages,
+            'user' => $user,
+            'message_rooms' => $message_rooms,
         ]);
+        */
     }
 
     /**
