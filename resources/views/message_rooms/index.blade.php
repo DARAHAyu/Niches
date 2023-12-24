@@ -32,6 +32,10 @@
                                 <p>N/A</p>
                             @endif 
                         </td>
+                        <td>
+                            {{-- メッセージルームの相手のidを渡す --}}
+                            <a href="{{ route('messages-create', $data['recipient']->id) }}" class = "btn btn-primary btn-block normal-case">このユーザに連絡する</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
