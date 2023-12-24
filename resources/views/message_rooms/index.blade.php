@@ -9,9 +9,10 @@
         <table class = "table table-zebra w-full my-4">
             <thead>
                 <tr>
-                    <th>送信相手</th>
+                    <th>相手</th>
                     <th>最後のメッセージ</th>
                     <th>送信日時</th>
+                    <th>連絡</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +35,7 @@
                         </td>
                         <td>
                             {{-- メッセージルームの相手のidを渡す --}}
-                            <a href="{{ route('messages-create', $data['recipient']->id) }}" class = "btn btn-primary btn-block normal-case">このユーザに連絡する</a>
+                            <a href="{{ route('messages-create', $data['recipient']->id) }}" class = "bg-blue-800 hover:bg-blue-700 text-white rounded px-4 py-2">メッセージルームを開く</a>
                         </td>
                     </tr>
                 @endforeach
