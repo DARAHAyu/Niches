@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('profile/store', [UserDetailsController::class, 'store'])->name("profile-store");
     Route::get('profile/edit', [UserDetailsController::class, 'edit'])->name("profile-edit");
     Route::put('profile/update', [UserDetailsController::class, 'update'])->name("profile-update");
+    Route::get('profile/my/index', [UserDetailsController::class, 'details_index'])->name("details-index");
 });
 
 // 「メッセージ」ページ
@@ -89,5 +90,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('my/follow/{userId}', [UserFollowController::class, 'store'])->name('user-follow');
     Route::delete('my/unfollow/{userId}', [UserFollowController::class, 'destroy'])->name('user-unfollow');
     Route::get('followings', [UsersController::class, 'followings'])->name('user-followings');
-    Route::get('followers', [UsersController::class, 'followers'])->name('users-followers');
+    Route::get('followers', [UsersController::class, 'followers'])->name('user-followers');
 });

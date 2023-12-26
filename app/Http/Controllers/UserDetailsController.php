@@ -90,4 +90,16 @@ class UserDetailsController extends Controller
             'latestUserDetail' => $latestUserDetail,
         ]);
     }
+
+    public function details_index()
+    {
+        $user = Auth::user();
+
+        $latestUserDetail = Auth::user()->user_details()->latest()->first();
+
+        return view('details.show', [
+            'user' => $user,
+            'latestUserDetail' => $latestUserDetail,
+        ]);
+    }
 }

@@ -7,8 +7,12 @@
             @include('users.card')
         </aside>
         <div class="sm:col-span-2 mt-4">
-            <p>他に、ユーザーの基本情報の表示・登録機能を追加する予定です</p>
-            <p>（職業、年齢、場所、得意カテゴリ、実績など）</p>
+            {{-- タブ --}}
+            @include('users.navtabs')
+            <div class="mt-4">
+                {{-- ユーザ一覧 --}}
+                @include('users.users')
+            </div>
         </div>
     </div>
 @endsection

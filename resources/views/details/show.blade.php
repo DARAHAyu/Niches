@@ -6,14 +6,17 @@
             @include('users.card')
         </aside>
         <div class="sm:col-span-2 mt-4">
-            <p>ニックネーム：{{ $latestUserDetail->nickname }}</p>
-            <p>年齢：{{ $latestUserDetail->age }}</p>
-            <p>職業：{{ $latestUserDetail->occupation }}</p>
-            <p>得意領域：{{ $latestUserDetail->business_area }}</p>
+            @include('users.navtabs')
+            <div class="mt-4">
+                <p>ニックネーム：{{ $latestUserDetail->nickname }}</p>
+                <p>年齢：{{ $latestUserDetail->age }}</p>
+                <p>職業：{{ $latestUserDetail->occupation }}</p>
+                <p>得意領域：{{ $latestUserDetail->business_area }}</p>
 
-            @if(Auth::id() == $user->id)
-                <a href="{{ route('profile-edit', $user->id)}}" class = "btn btn-primary">プロフィールを編集する</a>
-            @endif
+                @if(Auth::id() == $user->id)
+                    <a href="{{ route('profile-edit', $user->id)}}" class = "btn btn-primary">プロフィールを編集する</a>
+                @endif
+            </div>
         </div>
     </div>
 @endsection

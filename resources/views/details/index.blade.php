@@ -2,7 +2,7 @@
 
 @section('content')
     @if(auth()->user()->hasProfileDetails())
-        @include('details.show')
+        @include('profile.index')
     @else
         @include('details.store')
     @endif

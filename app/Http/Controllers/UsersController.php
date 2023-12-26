@@ -26,4 +26,41 @@ class UsersController extends Controller
             'sales_orders' => $sales_orders,
         ]);
     }
+
+    public function followings()
+    {
+        // ログインユーザを取得
+        $user = Auth::user();
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+
+        // ユーザのフォロー一覧を取得
+        $followings = $user->followings()->paginate(10);
+
+        // フォロー一覧ビューでそれらを表示
+        return view('users.followings', [
+            'user' => $user,
+            'users' => $followings,
+        ]);
+
+    }
+
+    public function followers()
+    {
+        // ログインユーザを取得
+        $user = Auth::user();
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+
+        // ユーザのフォロワー一覧を取得
+        $followers = $user->followers()->paginate(10);
+
+        // フォロワー一覧ビューでそれらを表示
+        return view('users.followers', [
+            'user' => $user,
+            'users' => $followers,
+        ]);
+    }
 }
