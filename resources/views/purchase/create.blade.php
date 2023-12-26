@@ -19,7 +19,7 @@
                             <textarea rows="1" name="purchase_abstract" class="input input-bordered w-full"></textarea>
                         </div>
                     
-                        <button type="submit" class="btn btn-primary btn-block normal-case">提案を登録する</button>
+                        <button type="submit" class="btn btn-primary btn-block normal-case btn-outline">提案を登録する</button>
                     </form>
                 </div>
             @endif

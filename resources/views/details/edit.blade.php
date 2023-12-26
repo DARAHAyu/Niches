@@ -26,7 +26,7 @@
                             <textarea rows="1" name="business_area" class="input input-bordered w-full">{{ $latestUserDetail->business_area }}</textarea>
                         </div>
                     
-                        <button type="submit" class="btn btn-primary btn-block normal-case">編集を保存する</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-outline normal-case">編集を保存する</button>
                     </form>
                 </div>
             @endif

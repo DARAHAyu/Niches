@@ -24,7 +24,7 @@
                 <input type="password" name="password" class="input input-bordered w-full">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block normal-case">ログイン</button>
+            <button type="submit" class="btn btn-primary btn-block normal-case btn-outline">ログイン</button>
 
             {{-- ユーザ登録ページへのリンク --}}
             <p class="mt-2">New user? <a class="link link-hover text-info" href="{{ route('register') }}">新規登録はこちら！</a></p>

@@ -38,7 +38,7 @@
                 <input type="password" name="password_confirmation" class="input input-bordered w-full">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block normal-case">登録</button>
+            <button type="submit" class="btn btn-primary btn-block normal-case btn-outline">登録</button>
         </form>
     </div>
 @endsection

@@ -13,7 +13,7 @@
                     </label>
                     <input type="text" name="message" class="input input-bordered w-full">
                 </div>
-            <button type="submit" class="btn btn-primary btn-outline">送信</button>
+            <button type="submit" class="btn btn-primary btn-block btn-outline">送信</button>
         </form>
     </div>
 @endsection
