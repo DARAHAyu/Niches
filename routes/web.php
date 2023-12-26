@@ -9,6 +9,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SalesOrdersController;
 use App\Http\Controllers\PurchaseOrdersController;
 use App\Http\Controllers\UserDetailsController;
+use App\Http\Controllers\UserFollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +72,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('profile/update', [UserDetailsController::class, 'update'])->name("profile-update");
 });
 
-// メッセージページ
+// 「メッセージ」ページ
 Route::group(['middleware' => ['auth']], function() {
     Route::get('my/messages/create/{receiverId}', [MessagesController::class, 'create'])->name('messages-create');
     Route::post('my/messages/store/{messageRoomId}', [MessagesController::class, 'store'])->name('messages-store');
@@ -81,4 +82,12 @@ Route::group(['middleware' => ['auth']], function() {
 // MessageRoomモデル
 Route::group(['middleware' => ['auth']], function() {
     Route::get('my/message-rooms/index', [MessageRoomsController::class, 'index'])->name('rooms-index');
+});
+
+// フォロー機能に関するモデル（userIdは相手のid）
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('my/follow/{userId}', [UserFollowController::class, 'store'])->name('user-follow');
+    Route::delete('my/unfollow/{userId}', [UserFollowController::class, 'destroy'])->name('user-unfollow');
+    Route::get('followings', [UsersController::class, 'followings'])->name('user-followings');
+    Route::get('followers', [UsersController::class, 'followers'])->name('users-followers');
 });

@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function loadRelationshipCounts()
     {
-        $this->loadCount('sales_orders', 'purchase_orders');
+        $this->loadCount('sales_orders', 'purchase_orders', 'followings', 'followers');
     }
 
     public function followings()
