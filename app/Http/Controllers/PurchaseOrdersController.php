@@ -53,7 +53,7 @@ class PurchaseOrdersController extends Controller
     public function destroy($id)
     {
         // idの値で発注を検索して取得
-        $purchase_order = \App\Models\PurchaseOrder::findOrFail($id);
+        $purchase_order = PurchaseOrder::findOrFail($id);
 
         // 認証済みユーザがその投稿の所有者である場合は投稿を削除
         if (Auth::id() === $purchase_order->user_id) {

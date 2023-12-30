@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/purchase/create', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
     Route::post('my/purchase/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
     Route::get('purchase/show/{purchaseId}', [PurchaseOrdersController::class, 'show'])->name('purchase-show');
+    // 自分の作成した提案を削除 
+    Route::delete('purchase/destroy/{purchaseId}', [PurchaseOrdersController::class, 'destroy'])->name('purchase-destroy');
     // 「提案を探す」ページ
     Route::get('others/purchases/index', [PurchaseOrdersController::class, 'othersPurchases'])->name('others-purchases');
 });
