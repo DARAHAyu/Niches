@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/sales/create', [SalesOrdersController::class, 'create'])->name('sales-create');
     Route::post('my/sales/store', [SalesOrdersController::class, 'store'])->name('sales-store');
     Route::get('sales/show/{saleId}', [SalesOrdersController::class, 'show'])->name('sales-show');
+    // 自分の作成した依頼を削除
+    Route::delete('sales/destroy/{saleId}', [SalesOrdersController::class, 'destroy'])->name('sales-destroy');
     // 「依頼を探す」ページ
     Route::get('others/sales/index', [SalesOrdersController::class, 'othersSales'])->name('others-sales');
 });
