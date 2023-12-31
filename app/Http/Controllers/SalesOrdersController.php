@@ -53,7 +53,7 @@ class SalesOrdersController extends Controller
     public function destroy($id)
     {
         // idの値で発注を検索して取得
-        $sales_order = \App\Models\SalesOrder::findOrFail($id);
+        $sales_order = SalesOrder::findOrFail($id);
 
         // 認証済みユーザがその投稿の所有者である場合は投稿を削除
         if (Auth::id() === $sales_order->user_id) {

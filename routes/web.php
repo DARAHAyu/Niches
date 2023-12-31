@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/sales/create', [SalesOrdersController::class, 'create'])->name('sales-create');
     Route::post('my/sales/store', [SalesOrdersController::class, 'store'])->name('sales-store');
     Route::get('sales/show/{saleId}', [SalesOrdersController::class, 'show'])->name('sales-show');
+    // 自分の作成した依頼を削除
+    Route::delete('sales/destroy/{saleId}', [SalesOrdersController::class, 'destroy'])->name('sales-destroy');
     // 「依頼を探す」ページ
     Route::get('others/sales/index', [SalesOrdersController::class, 'othersSales'])->name('others-sales');
 });
@@ -60,6 +62,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('my/purchase/create', [PurchaseOrdersController::class, 'create'])->name('purchase-create');
     Route::post('my/purchase/store', [PurchaseOrdersController::class, 'store'])->name('purchase-store');
     Route::get('purchase/show/{purchaseId}', [PurchaseOrdersController::class, 'show'])->name('purchase-show');
+    // 自分の作成した提案を削除 
+    Route::delete('purchase/destroy/{purchaseId}', [PurchaseOrdersController::class, 'destroy'])->name('purchase-destroy');
     // 「提案を探す」ページ
     Route::get('others/purchases/index', [PurchaseOrdersController::class, 'othersPurchases'])->name('others-purchases');
 });

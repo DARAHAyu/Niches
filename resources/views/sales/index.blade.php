@@ -16,7 +16,14 @@
                                 <p>最終更新日：{{ $mySale->updated_at }}</p>
                                 <p>タイトル：{{ $mySale->title }}</p>
                                 <p>依頼の概要：{{ $mySale->sales_abstract }}</p>
-                                <a href="{{ route('sales-show', ['userId' => $user->id, 'saleId' => $mySale->id]) }}" class = "btn normal-case">依頼の詳細</a>
+                                <div>
+                                    <a href="{{ route('sales-show', ['userId' => $user->id, 'saleId' => $mySale->id]) }}" class = "btn normal-case">依頼の詳細</a>
+                                    <form method="POST" action="{{ route('sales-destroy', $mySale->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class = "btn btn-error btn-outline normal-case" value="依頼を削除する" onclick="return confirm('本当に削除しますか？')">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     @endforeach
