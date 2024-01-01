@@ -9,7 +9,7 @@ class SalesOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'sales_abstract'];
+    protected $fillable = ['title', 'sales_abstract', 'category', 'budget', 'schedule'];
 
     /**
      * この発注を所有するユーザ（Userモデルとの関係を定義

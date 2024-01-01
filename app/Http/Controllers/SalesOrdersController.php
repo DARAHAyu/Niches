@@ -38,6 +38,9 @@ class SalesOrdersController extends Controller
         $request->validate([
             'title' => 'required|max:2000',
             'sales_abstract' => 'required|max:2000',
+            'category' => 'required|max:50',
+            'budget' => 'required|numeric',
+            'schedule' => 'required|date',
         ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
