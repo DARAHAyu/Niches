@@ -38,12 +38,18 @@ class SalesOrdersController extends Controller
         $request->validate([
             'title' => 'required|max:2000',
             'sales_abstract' => 'required|max:2000',
+            'category' => 'required|max:50',
+            'budget' => 'required|numeric',
+            'schedule' => 'required|date',
         ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
         $request->user()->sales_orders()->create([
             'title' => $request->title, 
             'sales_abstract' => $request->sales_abstract,
+            'category' => $request->category,
+            'budget' => $request->budget,
+            'schedule' => $request->schedule,
         ]);
 
         // 前のURLへリダイレクトさせる
