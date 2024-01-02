@@ -15,6 +15,9 @@
                         <p>最終更新日：{{ $purchase->updated_at }}</p>
                         <p>タイトル：{{ $purchase->title }}</p>
                         <p>依頼の概要：{{ $purchase->purchase_abstract }}</p>
+                        <p>カテゴリー：{{ $purchase->category }}</p>
+                        <p>予算：{{ $purchase->budget }}円</p>
+                        <p>募集締め切り日：{{ $purchase->schedule }}</p>
                     </div>
                 </div>
             </div>
