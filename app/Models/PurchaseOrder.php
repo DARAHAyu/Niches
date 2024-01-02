@@ -9,7 +9,7 @@ class PurchaseOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'purchase_abstract'];
+    protected $fillable = ['title', 'purchase_abstract', 'category', 'budget', 'schedule'];
 
     /**
      * この受注を所有するユーザ（Userモデルとの関係を定義

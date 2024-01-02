@@ -38,12 +38,18 @@ class PurchaseOrdersController extends Controller
         $request->validate([
             'purchase_abstract' => 'required|max:2000',
             'title' => 'required|max:2000',
+            'category' => 'required|max:50',
+            'budget' => 'required|numeric',
+            'schedule' => 'required|date',
         ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
         $request->user()->purchase_orders()->create([
             'title' => $request->title, 
             'purchase_abstract' => $request->purchase_abstract,
+            'category' => $request->category,
+            'budget' => $request->budget,
+            'schedule' => $request->schedule,
         ]);
 
         // 前のURLへリダイレクトさせる
