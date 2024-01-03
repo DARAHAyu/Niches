@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('sales/destroy/{saleId}', [SalesOrdersController::class, 'destroy'])->name('sales-destroy');
     // 「依頼を探す」ページ
     Route::get('others/sales/index', [SalesOrdersController::class, 'othersSales'])->name('others-sales');
+    Route::get('others/sales/search', [SalesOrdersController::class, 'search'])->name('sales-search');
 });
 
 // 提案に関するページ
@@ -66,6 +67,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('purchase/destroy/{purchaseId}', [PurchaseOrdersController::class, 'destroy'])->name('purchase-destroy');
     // 「提案を探す」ページ
     Route::get('others/purchases/index', [PurchaseOrdersController::class, 'othersPurchases'])->name('others-purchases');
+    Route::get('others/purchases/search', [PurchaseOrdersController::class, 'search'])->name('purchases-search');
 });
 
 // 「プロフィール」ページ
