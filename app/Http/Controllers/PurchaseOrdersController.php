@@ -106,6 +106,8 @@ class PurchaseOrdersController extends Controller
 
     public function othersPurchases() 
     {
+        $isSalesPage = false;
+
         $user = Auth::user();
 
         $othersPurchases = PurchaseOrder::where('user_id', '!=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
@@ -113,6 +115,25 @@ class PurchaseOrdersController extends Controller
         return view('purchase.others_purchases', [
             'user' => $user,
             'othersPurchases' => $othersPurchases,
+            'isSalesPage' => $isSalesPage,
+        ]);
+    }
+
+    // 提案をキーワードで検索
+    public function search(Request $request)
+    {
+        $isSalesPage = false;
+
+        $user = Auth::user();
+
+        $keyword = request('keyword');
+
+        $othersPurchases = PurchaseOrder::where('user_id', '!=', Auth::id())->where('title', 'like', "%{$keyword}%")->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('purchase.others_purchases', [
+            'user' => $user,
+            'othersPurchases' => $othersPurchases,
+            'isSalesPage' => $isSalesPage,
         ]);
     }
 }

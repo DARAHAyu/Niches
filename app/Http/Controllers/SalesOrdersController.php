@@ -86,6 +86,8 @@ class SalesOrdersController extends Controller
     // 自分以外の全ユーザの依頼を表示。
     public function othersSales()
     {
+        $isSalesPage = true;
+
         $user = Auth::user();
 
         $othersSales = SalesOrder::where('user_id', '!=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
@@ -93,6 +95,25 @@ class SalesOrdersController extends Controller
         return view('sales.others_sales', [
             'user' => $user,
             'othersSales' => $othersSales,
+            'isSalesPage' => $isSalesPage,
+        ]);
+    }
+
+    // 依頼をキーワードで検索
+    public function search(Request $request)
+    {
+        $isSalesPage = true;
+
+        $user = Auth::user();
+
+        $keyword = request('keyword');
+
+        $othersSales = SalesOrder::where('user_id', '!=', Auth::id())->where('title', 'like', "%{$keyword}%")->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('sales.others_sales', [
+            'user' => $user,
+            'othersSales' => $othersSales,
+            'isSalesPage' => $isSalesPage,
         ]);
     }
 }

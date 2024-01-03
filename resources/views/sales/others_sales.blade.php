@@ -3,6 +3,9 @@
 @section('content')
     @if (Auth::id() == $user->id)
         @if (isset($othersSales))
+
+            @include('commons.search_form')
+
             <div class="sm:grid sm:grid-cols-3 sm:gap-10">
                 @foreach ($othersSales as $othersSale)
                     <aside class="mt-4">
