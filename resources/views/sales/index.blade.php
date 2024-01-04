@@ -16,6 +16,9 @@
                                 <p>最終更新日：{{ $mySale->updated_at }}</p>
                                 <p>タイトル：{{ $mySale->title }}</p>
                                 <p>依頼の概要：{{ $mySale->sales_abstract }}</p>
+                                <p>カテゴリー：{{ $mySale->category }}</p>
+                                <p>予算：{{ $mySale->budget }}</p>
+                                <p>募集締め切り日：{{ $mySale->schedule }}</p>
                                 <div>
                                     <a href="{{ route('sales-show', ['userId' => $user->id, 'saleId' => $mySale->id]) }}" class = "btn normal-case">依頼の詳細</a>
                                     <form method="POST" action="{{ route('sales-destroy', $mySale->id) }}">

@@ -8,6 +8,9 @@
 
             <div class="sm:grid sm:grid-cols-3 sm:gap-10">
                 @foreach ($othersSales as $othersSale)
+                @php 
+                dd($othersSale)
+                @endphp 
                     <aside class="mt-4">
                         @include('users.card', ['user' => $othersSale->user])
                     </aside>
@@ -18,6 +21,9 @@
                                     <p>最終更新日：{{ $othersSale->updated_at }}</p>
                                     <p>タイトル：{{ $othersSale->title }}</p>
                                     <p>依頼の概要：{{ $othersSale->sales_abstract }}</p>
+                                    <p>カテゴリー：{{ $othersSale->category }}</p>
+                                    <p>予算：{{ $othersSale->budget }}</p>
+                                    <p>募集締め切り日：{{ $othersSale->schedule }}</p>
                                     <a href="{{ route('sales-show', ['saleId' => $othersSale->id]) }}" class = "btn normal-case">依頼の詳細</a>
                                 </div>
                             </div>
