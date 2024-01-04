@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -12,9 +13,15 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function test_the_application_returns_a_successful_response()
+
+    // テストとしてmy/sales/indexにアクセス可能かどうかを確認
+    public function test_my_sales(): void
     {
-        $response = $this->get('/');
+        // テスト用のユーザを作成
+        $user = User::factory()->create();
+
+        // 作成したユーザで認証
+        $response = $this->actingAs($user)->get('/my/sales/index');
 
         $response->assertStatus(200);
     }
