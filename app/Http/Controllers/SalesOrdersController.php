@@ -100,7 +100,7 @@ class SalesOrdersController extends Controller
     }
 
     // 依頼をキーワードで検索
-    public function search(Request $request)
+    public function search()
     {
         $isSalesPage = true;
 
