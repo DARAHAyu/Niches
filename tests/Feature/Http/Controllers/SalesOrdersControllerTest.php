@@ -44,8 +44,7 @@ class SalesOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
-        $formData = [
-            'category_id' => 1, 
+        $formData = [ 
             'title' => 'テストタイトル',
             'sales_abstract' => 'テスト概要',
             'category' => 'テストカテゴリー',
@@ -69,7 +68,6 @@ class SalesOrdersControllerTest extends TestCase
         $user = User::factory()->create();
 
         $formData = [
-            'category_id' => 1, 
             'title' => 'テストタイトル',
             'sales_abstract' => 'テスト概要',
             'category' => 'テストカテゴリー',
@@ -102,7 +100,6 @@ class SalesOrdersControllerTest extends TestCase
         $user = User::factory()->create();
 
         $formData = [
-            'category_id' => 1, 
             'title' => 'テストタイトル',
             'sales_abstract' => 'テスト概要',
             'category' => 'テストカテゴリー',
