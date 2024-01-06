@@ -8,9 +8,6 @@
 
             <div class="sm:grid sm:grid-cols-3 sm:gap-10">
                 @foreach ($othersSales as $othersSale)
-                @php 
-                dd($othersSale)
-                @endphp 
                     <aside class="mt-4">
                         @include('users.card', ['user' => $othersSale->user])
                     </aside>

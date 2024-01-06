@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->timestamps();
+        Schema::table('sales_orders', function (Blueprint $table) {
+            // 外部キー制約を削除
+            // $table->dropForeign(['category_id']);
+            
+            // カラムを削除
+            $table->dropColumn('category_id');
         });
     }
 
@@ -25,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
+        Schema::table('sales_orders', function (Blueprint $table) {
             //
         });
     }
