@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 use Tests\TestCase;
 
 class PurchaseOrdersControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
@@ -58,11 +60,15 @@ class PurchaseOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('purchase_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'purchase_abstract' => $formData['purchase_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
     }
 
-    // テストとしてsales/destroy/{saleId}にアクセスできるかどうかを確認
+    // テストとしてsales/destroy/{PurchaseId}にアクセスできるかどうかを確認
     public function test_purchase_destroy(): void
     {
         // テスト用のユーザを作成
@@ -82,7 +88,11 @@ class PurchaseOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('purchase_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'purchase_abstract' => $formData['purchase_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
 
         // 作成したフォームデータを取得
@@ -93,7 +103,11 @@ class PurchaseOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseMissing('purchase_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'purchase_abstract' => $formData['purchase_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
     }
 
@@ -117,7 +131,11 @@ class PurchaseOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('purchase_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'purchase_abstract' => $formData['purchase_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
 
         // 作成したフォームデータを取得

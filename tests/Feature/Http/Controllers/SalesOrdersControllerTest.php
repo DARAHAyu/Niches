@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 use Tests\TestCase;
 
 class SalesOrdersControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
@@ -57,7 +59,11 @@ class SalesOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('sales_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'sales_abstract' => $formData['sales_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
     }
 
@@ -89,7 +95,11 @@ class SalesOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseMissing('sales_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'sales_abstract' => $formData['sales_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
     }
 
@@ -112,7 +122,11 @@ class SalesOrdersControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertDatabaseHas('sales_orders', [
-            'user_id' => $user->id,
+            'title' => $formData['title'],
+            'sales_abstract' => $formData['sales_abstract'],
+            'category' => $formData['category'],
+            'budget' => $formData['budget'],
+            'schedule' => $formData['schedule'],
         ]);
 
         $sales_order = $user->sales_orders()->first();
