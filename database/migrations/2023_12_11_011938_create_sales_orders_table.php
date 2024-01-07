@@ -13,16 +13,13 @@
             public function up()
             {
                 Schema::create("sales_orders", function (Blueprint $table) {
-
 						$table->increments('id');
-						$table->integer('category_id')->unsigned();
 						$table->string('title',50);
 						$table->text('sales_abstract');
 						$table->timestamps();
-						$table->integer('user_id')->unsigned();
+						$table->unsignedBigInteger('user_id');
 
                         // 以下外部キー制約、必要に応じてコメントアウト
-						$table->foreign("category_id")->references("id")->on("caterories");
 						$table->foreign("user_id")->references("id")->on("users");
 
 
