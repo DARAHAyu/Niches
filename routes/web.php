@@ -81,9 +81,9 @@ Route::group(['middleware' => ['auth']], function() {
 
 // 「メッセージ」ページ
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('my/messages/index', [MessagesController::class, 'index'])->name('messages-index');
     Route::get('my/messages/create/{receiverId}', [MessagesController::class, 'create'])->name('messages-create');
     Route::post('my/messages/store/{messageRoomId}', [MessagesController::class, 'store'])->name('messages-store');
-    Route::get('my/messages/index', [MessagesController::class, 'index'])->name('messages-index');
 });
 
 // MessageRoomモデル

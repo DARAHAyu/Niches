@@ -69,25 +69,17 @@ class MessagesController extends Controller
         
         $user = Auth::user();
 
+        // バリデーション
+        $request->validate([
+            'message' => 'required|max:255',
+        ]);
+
         $user->messages()->create([
             'message' => $request->message,
             'message_room_id' => $messageRoomId,
         ]);
 
         return back();
-    
-
-        /*
-        $user = Auth::user();
-
-        $user->messages()->create([
-            'message' => $request->message,
-        ]);
-        
-        $senderId = Auth::user()->id;
-
-        $message_room = $user->create_message_room($senderId, $receiverId)
-        */
     }
 
     /**
