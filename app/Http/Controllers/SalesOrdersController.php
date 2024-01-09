@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\SalesOrder;
 use App\Models\User;
+use App\Http\Requests\SalesOrdersRequest;
 
 class SalesOrdersController extends Controller
 {
@@ -32,17 +33,8 @@ class SalesOrdersController extends Controller
         ]);
     }
     
-    public function store(Request $request)
+    public function store(SalesOrdersRequest $request)
     {
-        // バリデーション
-        $request->validate([
-            'title' => 'required|max:2000',
-            'sales_abstract' => 'required|max:2000',
-            'category' => 'required|max:50',
-            'budget' => 'required|numeric',
-            'schedule' => 'required|date',
-        ]);
-
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
         $request->user()->sales_orders()->create([
             'title' => $request->title, 
@@ -56,21 +48,15 @@ class SalesOrdersController extends Controller
         return back();
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         // idの値で発注を検索して取得
         $sales_order = SalesOrder::findOrFail($id);
 
         // 認証済みユーザがその投稿の所有者である場合は投稿を削除
-        if (Auth::id() === $sales_order->user_id) {
-            $sales_order->delete();
-            return back()
-                ->with('発注は削除されました');
-        }
+        $sales_order->delete();
 
-        // 前のURLへリダイレクトさせる
-        return back()
-            ->with('削除に失敗しました');
+        return back()->with('発注は削除されました');
     }
 
     public function show($saleId) 
