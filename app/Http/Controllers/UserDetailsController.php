@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;   
+use App\Http\Requests\UserDetailsRequest;
+
 use App\Models\User;    
 use App\Models\UserDetail;
 
@@ -23,17 +24,9 @@ class UserDetailsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(UserDetailsRequest $request)
     {
         $user = Auth::user();
-
-        // バリデーション
-        $request->validate([
-            'nickname' => 'required|max:30',
-            'age' => 'required|max:3',
-            'occupation' => 'required|max:30',
-            'business_area' => 'required|max:30'
-        ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
         $userDetail = $request->user()->user_details()->create([
@@ -62,17 +55,9 @@ class UserDetailsController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(UserDetailsRequest $request)
     {
         $user = Auth::user();
-
-        // バリデーション
-        $request->validate([
-            'nickname' => 'required|max:30',
-            'age' => 'required|max:3',
-            'occupation' => 'required|max:30',
-            'business_area' => 'required|max:30'
-        ]);
 
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
         $request->user()->user_details()->latest()->first()->update([
