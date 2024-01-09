@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
+use App\Http\Requests\PurchaseOrdersRequest;
 
 use App\Models\PurchaseOrder;
 use App\Models\User;
@@ -32,17 +33,8 @@ class PurchaseOrdersController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PurchaseOrdersRequest $request)
     {
-        // バリデーション
-        $request->validate([
-            'purchase_abstract' => 'required|max:2000',
-            'title' => 'required|max:2000',
-            'category' => 'required|max:50',
-            'budget' => 'required|numeric',
-            'schedule' => 'required|date',
-        ]);
-
         // 認証済みユーザの発注として作成（リクエストされた値を元に作成）
         $request->user()->purchase_orders()->create([
             'title' => $request->title, 
@@ -56,21 +48,16 @@ class PurchaseOrdersController extends Controller
         return back();
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         // idの値で発注を検索して取得
         $purchase_order = PurchaseOrder::findOrFail($id);
-
-        // 認証済みユーザがその投稿の所有者である場合は投稿を削除
-        if (Auth::id() === $purchase_order->user_id) {
-            $purchase_order->delete();
-            return back()
-                ->with('発注は削除されました');
-        }
+        //認証済みユーザがその投稿者である場合は投稿を削除
+        $purchase_order->delete();
 
         // 前のURLへリダイレクトさせる
         return back()
-            ->with('削除に失敗しました');
+            ->with('削除に成功しました');
     }
 
     public function show($purchaseId) 
