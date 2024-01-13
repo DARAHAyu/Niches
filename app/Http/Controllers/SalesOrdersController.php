@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\SalesOrder;
 use App\Models\User;
+use App\Models\Category;
 use App\Http\Requests\SalesOrdersRequest;
 
 class SalesOrdersController extends Controller
@@ -28,8 +29,11 @@ class SalesOrdersController extends Controller
     {
         $user = Auth::user();
 
+        $categories = Category::all();
+
         return view('sales.create', [
             'user' => $user,
+            'categories' => $categories,
         ]);
     }
     
