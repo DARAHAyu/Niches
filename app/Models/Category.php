@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->hasMany(SalesOrder::class);
     }
+
+    public function purchase_orders()
+    {
+        return $this->hasMany(PurchaseOrder::class);
+    }
 }
