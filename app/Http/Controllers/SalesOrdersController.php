@@ -48,8 +48,6 @@ class SalesOrdersController extends Controller
             'schedule' => $request->schedule,
         ]);
 
-        dd("test");
-
         // 前のURLへリダイレクトさせる
         return back();
     }
