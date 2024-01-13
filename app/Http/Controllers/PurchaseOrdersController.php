@@ -8,6 +8,7 @@ use App\Http\Requests\PurchaseOrdersRequest;
 
 use App\Models\PurchaseOrder;
 use App\Models\User;
+use App\Models\Category;
 
 class PurchaseOrdersController extends Controller
 {
@@ -28,8 +29,11 @@ class PurchaseOrdersController extends Controller
     {
         $user = Auth::user();
 
+        $categories = Category::all();
+
         return view('purchase.create', [
             'user' => $user,
+            'categories' => $categories,
         ]);
     }
 

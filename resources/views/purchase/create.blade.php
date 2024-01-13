@@ -29,7 +29,11 @@
                             <label for="text" class="label">
                                 <span class="label-text">カテゴリー</span>
                             </label>
-                            <input type="text" name="category" class="input input-bordered w-full">
+                            <select name="category_id" id="category" class = "input input-bordered w-full">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-control my-4">
