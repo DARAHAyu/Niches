@@ -34,7 +34,7 @@ class SalesOrdersRequest extends FormRequest
         return [
             'title' => 'required|max:2000',
             'sales_abstract' => 'required|max:2000',
-            'category' => 'required|max:50',
+            'category_id' => 'required|integer',
             'budget' => 'required|numeric',
             'schedule' => 'required|date',
         ];
