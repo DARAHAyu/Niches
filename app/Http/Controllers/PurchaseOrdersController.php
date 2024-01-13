@@ -8,6 +8,7 @@ use App\Http\Requests\PurchaseOrdersRequest;
 
 use App\Models\PurchaseOrder;
 use App\Models\User;
+use App\Models\Category;
 
 class PurchaseOrdersController extends Controller
 {
@@ -28,8 +29,11 @@ class PurchaseOrdersController extends Controller
     {
         $user = Auth::user();
 
+        $categories = Category::all();
+
         return view('purchase.create', [
             'user' => $user,
+            'categories' => $categories,
         ]);
     }
 
@@ -39,7 +43,7 @@ class PurchaseOrdersController extends Controller
         $request->user()->purchase_orders()->create([
             'title' => $request->title, 
             'purchase_abstract' => $request->purchase_abstract,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'budget' => $request->budget,
             'schedule' => $request->schedule,
         ]);
