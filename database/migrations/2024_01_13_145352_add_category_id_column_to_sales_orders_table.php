@@ -14,8 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sales_orders', function (Blueprint $table) {
-            // 外部キー制約を削除
-            $table->dropForeign(['category']);
             // categoryカラムを削除
             $table->dropColumn('category');
         });

@@ -14,8 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sales_orders', function (Blueprint $table) {
-            // category_idカラムを削除
-            $table->dropColumn('category_id');
         });
     }
 
