@@ -43,7 +43,7 @@ class PurchaseOrdersController extends Controller
         $request->user()->purchase_orders()->create([
             'title' => $request->title, 
             'purchase_abstract' => $request->purchase_abstract,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'budget' => $request->budget,
             'schedule' => $request->schedule,
         ]);
