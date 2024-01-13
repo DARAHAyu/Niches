@@ -43,10 +43,12 @@ class SalesOrdersController extends Controller
         $request->user()->sales_orders()->create([
             'title' => $request->title, 
             'sales_abstract' => $request->sales_abstract,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'budget' => $request->budget,
             'schedule' => $request->schedule,
         ]);
+
+        dd("test");
 
         // 前のURLへリダイレクトさせる
         return back();
