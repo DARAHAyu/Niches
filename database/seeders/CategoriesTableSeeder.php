@@ -18,7 +18,7 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->delete(); // categoriesテーブルのデータを一旦削除する
 
         // categoriesテーブルのオートインクリメント値をリセット
-        DB::statement('ALTER TABLE categories AUTO_INCREMENT = 1');
+        DB::statement('ALTER SEQUENCE categories_id_seq RESTART WITH 1');
 
         // categoriesテーブルのテストデータを作成
         $categories = ['ゲーム', '料理', 'スポーツ', '音楽', 'その他'];

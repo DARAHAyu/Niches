@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
+use App\Models\Category;
 use Tests\TestCase;
 
 class PurchaseOrdersControllerTest extends TestCase
@@ -46,11 +47,14 @@ class PurchaseOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
+        // テスト用のカテゴリーを作成
+        $category = Category::factory()->create();
+
         // テスト用のフォームデータを作成
         $formData = [
             'title' => 'テストタイトル',
             'purchase_abstract' => 'テスト概要',
-            'category' => 'テストカテゴリー',
+            'category_id' => $category->id,
             'budget' => 1000,
             'schedule' => '2021-01-01',
         ];
@@ -62,7 +66,7 @@ class PurchaseOrdersControllerTest extends TestCase
         $this->assertDatabaseHas('purchase_orders', [
             'title' => $formData['title'],
             'purchase_abstract' => $formData['purchase_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
@@ -74,11 +78,14 @@ class PurchaseOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
+        // テスト用のカテゴリーを作成
+        $category = Category::factory()->create();
+
         // テスト用のフォームデータを作成
         $formData = [
             'title' => 'テストタイトル',
             'purchase_abstract' => 'テスト概要',
-            'category' => 'テストカテゴリー',
+            'category_id' => $category->id,
             'budget' => 1000,
             'schedule' => '2021-01-01',
         ];
@@ -90,7 +97,7 @@ class PurchaseOrdersControllerTest extends TestCase
         $this->assertDatabaseHas('purchase_orders', [
             'title' => $formData['title'],
             'purchase_abstract' => $formData['purchase_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
@@ -105,7 +112,7 @@ class PurchaseOrdersControllerTest extends TestCase
         $this->assertDatabaseMissing('purchase_orders', [
             'title' => $formData['title'],
             'purchase_abstract' => $formData['purchase_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
@@ -117,11 +124,14 @@ class PurchaseOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
+        // テスト用のカテゴリーを作成
+        $category = Category::factory()->create();
+
         // テスト用のフォームデータを作成
         $formData = [
             'title' => 'テストタイトル',
             'purchase_abstract' => 'テスト概要',
-            'category' => 'テストカテゴリー',
+            'category_id' => $category->id,
             'budget' => 1000,
             'schedule' => '2021-01-01',
         ];
@@ -133,7 +143,7 @@ class PurchaseOrdersControllerTest extends TestCase
         $this->assertDatabaseHas('purchase_orders', [
             'title' => $formData['title'],
             'purchase_abstract' => $formData['purchase_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
