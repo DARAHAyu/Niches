@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete(); // categoriesテーブルのデータを一旦削除する
 
         // usersテーブルのオートインクリメント値をリセット
-        DB::statement('ALTER TABLE users AUTO_INCREMENT = 1');
+        DB::statement('ALTER SEQUENCE sales_orders_id_seq RESTART WITH 1');
 
         // 10人分のテストデータを作成
         User::factory(10)->create();
