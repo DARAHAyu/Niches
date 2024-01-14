@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
+use App\Models\Category;
 use Tests\TestCase;
 
 class SalesOrdersControllerTest extends TestCase
@@ -46,10 +47,13 @@ class SalesOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
+        // テスト用のカテゴリーを作成
+        $category = Category::factory()->create();
+
         $formData = [ 
             'title' => 'テストタイトル',
             'sales_abstract' => 'テスト概要',
-            'category' => 'テストカテゴリー',
+            'category_id' => $category->id,
             'budget' => 1000,
             'schedule' => '2021-01-01',
         ];
@@ -61,7 +65,7 @@ class SalesOrdersControllerTest extends TestCase
         $this->assertDatabaseHas('sales_orders', [
             'title' => $formData['title'],
             'sales_abstract' => $formData['sales_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
@@ -73,10 +77,13 @@ class SalesOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
+        // テスト用のカテゴリーを作成
+        $category = Category::factory()->create();
+
         $formData = [
             'title' => 'テストタイトル',
             'sales_abstract' => 'テスト概要',
-            'category' => 'テストカテゴリー',
+            'category_id' => $category->id,
             'budget' => 1000,
             'schedule' => '2021-01-01',
         ];
@@ -97,7 +104,7 @@ class SalesOrdersControllerTest extends TestCase
         $this->assertDatabaseMissing('sales_orders', [
             'title' => $formData['title'],
             'sales_abstract' => $formData['sales_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
@@ -109,10 +116,13 @@ class SalesOrdersControllerTest extends TestCase
         // テスト用のユーザを作成
         $user = User::factory()->create();
 
+        // テスト用のカテゴリーを作成
+        $category = Category::factory()->create();
+
         $formData = [
             'title' => 'テストタイトル',
             'sales_abstract' => 'テスト概要',
-            'category' => 'テストカテゴリー',
+            'category_id' => $category->id,
             'budget' => 1000,
             'schedule' => '2021-01-01',
         ];
@@ -124,7 +134,7 @@ class SalesOrdersControllerTest extends TestCase
         $this->assertDatabaseHas('sales_orders', [
             'title' => $formData['title'],
             'sales_abstract' => $formData['sales_abstract'],
-            'category' => $formData['category'],
+            'category_id' => $formData['category_id'],
             'budget' => $formData['budget'],
             'schedule' => $formData['schedule'],
         ]);
