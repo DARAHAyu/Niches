@@ -18,7 +18,7 @@
                                     <p>最終更新日：{{ $othersPurchase->updated_at }}</p>
                                     <p>タイトル：{{ $othersPurchase->title }}</p>
                                     <p>依頼の概要：{{ $othersPurchase->purchase_abstract }}</p>
-                                    <p>カテゴリー：{{ $othersPurchase->category }}</p>
+                                    <p>カテゴリー：{{ $othersPurchase->category->category }}</p>
                                     <p>予算：{{ $othersPurchase->budget }}円</p>
                                     <p>募集締め切り日：{{ $othersPurchase->schedule }}</p>
                                     <a href="{{ route('purchase-show', ['purchaseId' => $othersPurchase->id]) }}" class = "btn normal-case">依頼の詳細</a>
