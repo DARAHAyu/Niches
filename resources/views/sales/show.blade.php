@@ -15,7 +15,7 @@
                         <p>最終更新日：{{ $sale->updated_at }}</p>
                         <p>タイトル：{{ $sale->title }}</p>
                         <p>依頼の概要：{{ $sale->sales_abstract }}</p>
-                        <p>カテゴリー：{{ $sale->category }}</p>
+                        <p>カテゴリー：{{ $sale->category->category }}</p>
                         <p>予算：{{ $sale->budget }}</p>
                         <p>募集締め切り日：{{ $sale->schedule }}</p>
                     </div>
