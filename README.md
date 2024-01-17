@@ -1,3 +1,6 @@
+
+<p align="center>![logo](https://github.com/DARAHAyu/Niches/assets/128980705/11693a96-fc87-4a30-bc3f-62db0f8cc8f0)</p>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
