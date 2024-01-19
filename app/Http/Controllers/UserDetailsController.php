@@ -71,6 +71,8 @@ class UserDetailsController extends Controller
 
         $latestUserDetail = $user->user_details()->latest()->first();
 
+        $this->authorize('update', $latestUserDetail);
+
         // 前のURLへリダイレクトさせる
         return view('details.index', [
             'user' => $user,

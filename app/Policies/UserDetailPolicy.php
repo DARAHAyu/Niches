@@ -53,7 +53,7 @@ class UserDetailPolicy
      */
     public function update(User $user, UserDetail $userDetail)
     {
-        //
+        return $user->id === $userDetail->user_id;
     }
 
     /**
