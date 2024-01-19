@@ -77,6 +77,34 @@ class UserDetailsControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    // 非認可ユーザがprofile/editにアクセスすると403エラーが返るかどうかを確認
+    public function test_UserDetails_edit_403()
+    {
+        // ログインユーザを用意
+        $user = User::factory()->create();
+
+        // 非認可ユーザを用意
+        $otherUser = User::factory()->create();
+
+        // フォームデータを用意
+        $formData = [
+            'nickname' => 'テストニックネーム',
+            'age' => 20,
+            'occupation' => 'テスト職業',
+            'business_area' => 'テスト営業エリア',
+        ];
+
+        // ログインユーザでフォームデータを送信
+        $response = $this->actingAs($user)->post('profile/store', $formData);
+
+        // 非認可ユーザでアクセス
+        $response = $this->actingAs($otherUser)->get('profile/edit');
+
+        $response->assertStatus(403);
+
+
+    }
+
     // テストとしてprofile/updateにアクセスできるかどうかを確認
     public function test_UserDetails_update()
     {

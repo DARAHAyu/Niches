@@ -49,6 +49,8 @@ class UserDetailsController extends Controller
 
         $latestUserDetail = $user->user_details()->latest()->first();
 
+        $this->authorize('edit', $latestUserDetail);
+
         return view('details.edit', [
             'user' => $user,
             'latestUserDetail' => $latestUserDetail
@@ -68,6 +70,8 @@ class UserDetailsController extends Controller
         ]);
 
         $latestUserDetail = $user->user_details()->latest()->first();
+
+        $this->authorize('update', $latestUserDetail);
 
         // 前のURLへリダイレクトさせる
         return view('details.index', [
